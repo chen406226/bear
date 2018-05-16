@@ -1,0 +1,84 @@
+span.jump{  
+  float:left;  
+  position: relative;  
+}  
+
+span.jump1{  
+  -webkit-animation:jump 1s linear 0s infinite alternate;  
+}  
+
+span.jump2{  
+  -webkit-animation:jump 1s linear 0.1s infinite alternate;  
+}  
+
+span.jump3{  
+  -webkit-animation:jump 1s linear 0.2s infinite alternate;  
+}  
+
+span.jump4{  
+  -webkit-animation:jump 1s linear 0.3s infinite alternate;  
+}  
+
+span.jump5{  
+  -webkit-animation:jump 1s linear 0.4s infinite alternate;  
+}  
+
+span.jump6{  
+  -webkit-animation:jump 1s linear 0.5s infinite alternate;  
+} 
+
+span.jump7{  
+  -webkit-animation:jump 1s linear 0.6s infinite alternate;  
+} 
+span.jump8{  
+  -webkit-animation:jump 1s linear 0.7s infinite alternate;  
+} 
+span.jump9{  
+  -webkit-animation:jump 1s linear 0.8s infinite alternate;  
+} 
+span.jump10{  
+  -webkit-animation:jump 1s linear 0.9s infinite alternate;  
+} 
+span.jump11{  
+  -webkit-animation:jump 1s linear 1s infinite alternate;  
+} 
+span.jump12{  
+  -webkit-animation:jump 1s linear 1.1s infinite alternate;  
+} 
+span.jump13{  
+  -webkit-animation:jump 1s linear 1.2s infinite alternate;  
+} 
+span.jump14{  
+  -webkit-animation:jump 1s linear 1.3s infinite alternate;  
+} 
+span.jump15{  
+  -webkit-animation:jump 1s linear 1.4s infinite alternate;  
+} 
+span.jump16{  
+  -webkit-animation:jump 1s linear 1.5s infinite alternate;  
+} 
+span.jump17{  
+  -webkit-animation:jump 1s linear 1.6s infinite alternate;  
+} 
+span.jump18{  
+  -webkit-animation:jump 1s linear 1.7s infinite alternate;  
+} 
+
+span.jump19{  
+  -webkit-animation:jump 1s linear 1.8s infinite alternate;  
+} 
+@-webkit-keyframes jump  
+{  
+  0%{  
+      top:0px;  
+      color:red;  
+  }  
+  50%{  
+      top:-3px;  
+      color:green;  
+  }  
+  100%{  
+      top:3px;  
+      color:blue;  
+  }  
+}  

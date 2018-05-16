@@ -41,18 +41,6 @@ const Music = resolve => {
   });
 };
 
-const CreateMusic = resolve => {
-  require.ensure(['../components/Music/Create.vue'], () => {
-    resolve(require('../components/Music/Create.vue'));
-  });
-};
-
-const Del = resolve => {
-  require.ensure(['../components/Music/Del.vue'], () => {
-    resolve(require('../components/Music/Del.vue'));
-  });
-};
-
 const Biography = resolve => {
   require.ensure(['../components/Biography/Biography.vue'], () => {
     resolve(require('../components/Biography/Biography.vue'));
@@ -71,7 +59,7 @@ const Error404 = resolve => {
 };
 
 const router = new Router({
-  mode: 'hash',
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -109,17 +97,13 @@ const router = new Router({
       name: 'music',
       component: Music 
     },{
-      path: '/music/create',
-      name: 'biography',
-      component: CreateMusic,
-    },{
       path: '/biography',
       name: 'biography',
       component: Biography,
     },{
       path: '/biography/detail',
       component: BioDetail,
-    },
+    }
   ]
 });
 

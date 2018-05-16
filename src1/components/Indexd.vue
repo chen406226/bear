@@ -5,14 +5,14 @@
     <p>故事或许不够美好，好在酒水管饱。我知道，每个人的世界都有不同，但这些故事里的世界，一定是你似曾相识又触摸不到的另一面，它就像夜里的酒，早上的花儿，平淡又真实，美好又残酷。</p>
     <p class="tc pt">愿我们的故事绿水长流~</p>
     <p class="tc">敬你的孤独择日而终!</p>
-    <!-- <mt-cell to="/hello" is-link>酒已酿好，等你来听</mt-cell> -->
+    <mt-cell to="/hello" is-link>酒已酿好，等你来听</mt-cell>
     <p @click="sdff">你好</p>
-    
   </div>
 </template>
 
 <script>
 import api from '../axios.js'
+import axios from 'axios'
 export default {
   data(){
     return {
@@ -67,47 +67,18 @@ export default {
     },
     sdff(){
       console.log(3434)
-      // api.CreateMusic({
-      //   id:400162138,
-      //   create_user: '172221516',
-      //   createtext:'西风李',
-      //   songinfo: {
-      //       id:400162138,
-      //       artistname:'Beyond',
-      //       slbumname:'华纳23周年几年精选系列'
-      //   },
-      // }).then(response => {
-      //     console.log(response);
-      //     this.$message({
-      //       tyep:'success',
-      //       message:'添加成功'
-      //     })
-      //   }).catch((err)=>{console.log(err)})
+      api.Infos()
+        .then(response => {
+          console.log(response);
 
-
-        api.AddMusicComment({
-          username:'451969599',
-          text:'说的太好了',
-          id:400162138,
-        }).then(response => {
-            console.log(response);
-            this.$message({
-              tyep:'success',
-              message:'评论成功'
-            })
-          }).catch((err)=>{console.log(err)})
-
-      // api.Infos()
-      //   .then(response => {
-      //     console.log(response);
-
-      //     this.$message({
-      //       type: 'success',
-      //       message: '删除成功'
-      //     });
-      //   }).catch((err) => {
-      //     console.log(err);
-      //   })
+          this.$message({
+            type: 'success',
+            message: '删除成功'
+          });
+          //移除节点
+        }).catch((err) => {
+          console.log(err);
+        })
     }
   }
 }
@@ -117,7 +88,6 @@ export default {
 <style scoped lang="less">
 .indexd{
   font-size: 14px;
-  padding: 0.5rem 0.3rem;
   img{
     width: 4rem;
     height: auto;

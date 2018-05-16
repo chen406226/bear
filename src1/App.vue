@@ -1,12 +1,10 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <Msg></Msg>
   </div>
 </template>
 
 <script>
-import Msg from './common/Msg.vue'
 export default {
   name: 'app',
   methods: {
@@ -19,9 +17,6 @@ export default {
     mounted() {
       this.resize_font()
     },
-    components: {
-      Msg
-    }
 }
 </script>
 
@@ -32,6 +27,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /* margin-top: 60px; */
+  margin-top: 60px;
 }
 </style>

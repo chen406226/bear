@@ -23,14 +23,7 @@ const mutations = {
         //把用户名存起来
         state.username = data;
         window.sessionStorage.setItem('username', data);
-    },
-    [types.SHOW_MSG]: (state,content) => {
-        state.msg.content = content
-        state.msg.show = true
-        setTimeout(() => {
-            state.msg.show = false
-        },state.msg.time)
-    },
+    }
 };
 
 export default mutations;

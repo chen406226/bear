@@ -14,10 +14,7 @@ export default {
     },
     UserName({ commit }, data){
         commit(types.USERNAME, data);
-    },
-    showMsg({commit}, state){
-        commit('SHOW_MSG',state)
-    },
+    }
 }
 
 //改法：

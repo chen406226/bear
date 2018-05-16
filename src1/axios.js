@@ -64,13 +64,5 @@ export default {
     },
     Infos(){
         return instance.get('/music/infos');
-    },
-    //添加音乐
-    CreateMusic(data){
-        return instance.post('/music/create', data);
-    },
-    //添加音乐评论
-    AddMusicComment(data){
-        return instance.post('/music/comment', data);
-    },
+    }
 }

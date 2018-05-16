@@ -8,8 +8,10 @@ const checkToken = require('../token/checkToken.js');
 
 // childRouter.post('/musicinfo', MusicController.Info);
 childRouter.get('/infos', MusicController.Infos);
-// childRouter.post('/register', UserController.Reg);
-
+//添加
+childRouter.post('/create', MusicController.Create);
+//评论
+childRouter.post('/comment', MusicController.Comment);
 //需要先检查权限的路由
 // childRouter.get('/user', checkToken, UserController.GetAllUsers);
 // childRouter.post('/delUser', checkToken, UserController.DelUser);
