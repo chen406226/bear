@@ -11,3 +11,19 @@ export function getParam(url, name) {
   if (r != null) return unescape(r[2]);
   return null; //返回参数值
 }
+
+export function getAuthority() {
+  return localStorage.getItem('userInfo');
+}
+
+export function setAuthority(data) {
+  return localStorage.setItem('userInfo', JSON.stringify(data));
+}
+
+export function setMenu(data) {
+  return localStorage.setItem('mymenu', JSON.stringify(data));
+}
+
+export function removeAuthority() {
+  localStorage.clear();
+}

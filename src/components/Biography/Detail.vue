@@ -23,6 +23,7 @@
 
 <style scoped lang="less">
 .header{
+  overflow:hidden;
   img{
     width: 100%;
   }

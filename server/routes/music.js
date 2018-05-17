@@ -10,8 +10,15 @@ const checkToken = require('../token/checkToken.js');
 childRouter.get('/infos', MusicController.Infos);
 //添加
 childRouter.post('/create', MusicController.Create);
+//查找详情
+childRouter.post('/detail', MusicController.Detail);
 //评论
 childRouter.post('/comment', MusicController.Comment);
+//获得列表
+childRouter.post('/list', MusicController.GetlimitMusic);
+//删除评论
+// childRouter.post('/delcomment', MusicController.DelComment);
+
 //需要先检查权限的路由
 // childRouter.get('/user', checkToken, UserController.GetAllUsers);
 // childRouter.post('/delUser', checkToken, UserController.DelUser);

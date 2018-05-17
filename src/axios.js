@@ -65,12 +65,23 @@ export default {
     Infos(){
         return instance.get('/music/infos');
     },
+    DetailMusic(data){
+        return instance.post('/music/detail',data);
+    },
     //添加音乐
     CreateMusic(data){
         return instance.post('/music/create', data);
+    },
+    //得到音乐列表
+    GetMusic(data){
+        return instance.post('/music/list', data);
     },
     //添加音乐评论
     AddMusicComment(data){
         return instance.post('/music/comment', data);
     },
+    Uploadfile(data){
+        return instance.post('/upload/jpg', data);        
+    },
+
 }

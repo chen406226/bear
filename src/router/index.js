@@ -47,9 +47,9 @@ const CreateMusic = resolve => {
   });
 };
 
-const Del = resolve => {
-  require.ensure(['../components/Music/Del.vue'], () => {
-    resolve(require('../components/Music/Del.vue'));
+const DetailMusic = resolve => {
+  require.ensure(['../components/Music/Detail.vue'], () => {
+    resolve(require('../components/Music/Detail.vue'));
   });
 };
 
@@ -112,6 +112,10 @@ const router = new Router({
       path: '/music/create',
       name: 'biography',
       component: CreateMusic,
+    },{
+      path: '/music/detail',
+      name: 'detail',
+      component: DetailMusic,
     },{
       path: '/biography',
       name: 'biography',

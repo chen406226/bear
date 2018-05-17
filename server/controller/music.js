@@ -76,6 +76,7 @@ const delComment = function(id,username,text){
     });
 };
 //创建
+// db.test.find({},{pic:{$slice:1}})
 // const Create = async ( ctx ) => {
     
 //     let id = ctx.request.body.id;
@@ -198,6 +199,17 @@ const Comment = async( ctx ) => {
     };
 };
 
+// const DelComment = async( ctx ) => {
+//     let id = ctx.request.body.id;
+//     let username = ctx.request.body.username;
+//     let text = ctx.request.body.text;
+//     await addComment(id,username,text)
+//     ctx.status = 200;
+//     ctx.body = {
+//         success: '评论成功'
+//     };
+// };
+//
 const Infos = async( ctx ) => {
   //拿到要删除的用户id
   let id = ctx.request.body.id;
@@ -206,17 +218,19 @@ const Infos = async( ctx ) => {
       success: '删除成功'
   };
 };
-// const Create = async( ctx ) => {
-//     //拿到要删除的用户id
-//     console.log(1232)
-//     let id = ctx.request.body.id;
-//     console.log(ctx)
-//     await delUser(id);
-//     ctx.status = 200;
-//     ctx.body = {
-//         success: '删除成功'
-//     };
-//   };
+const Detail = async( ctx ) => {
+    //拿到要查找的音乐id
+    let id = ctx.request.body.id;
+    let doc = await findMusic(id);
+    if(doc){ 
+        ctx.status = 200;
+        ctx.body = {
+            success: true,
+            data:doc
+        };
+    }
+};
+
 module.exports = {
-    Infos,Create,Comment
+    Infos,Create,Comment,GetlimitMusic,Detail
 };

@@ -6,9 +6,9 @@ import router from './router'
 import MintUI from 'mint-ui';
 
 //引用elment-ui
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
-Vue.use(ElementUI);
+// import ElementUI from 'element-ui'
+// import 'element-ui/lib/theme-default/index.css'
+// Vue.use(ElementUI);
 Vue.use(MintUI);
 
 //引入store

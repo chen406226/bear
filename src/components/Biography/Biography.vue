@@ -23,7 +23,7 @@
       <p>65454</p>
       <p>65454</p>
     </div>
-    <a name='biography/#maodian'>654564654646545</a>
+    <a name='biography/#maodian'>656545</a>
     <p id="sdf">;lsj;kfj;</p>
     <div>
       <p>65454</p>
@@ -65,6 +65,7 @@ import {getParam,jumpmaodian} from '../../handle/fun.js'
 
 <style scoped lang="less">
   .header{
+    overflow:hidden;    
     img{
       width: 100%;
     }

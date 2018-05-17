@@ -1,6 +1,6 @@
 const Koa = require('koa');
 const app = new Koa();
-
+const cors = require('koa2-cors')
 //router
 const Router = require('koa-router');
 
@@ -14,11 +14,14 @@ app.use(bodyParser());
 //引入子路由
 const loginRouter = require('./server/routes/user.js');
 const musicRouter = require('./server/routes/music.js')
+const handleRouter = require('./server/routes/handle.js')
 //装载子路由
 router.use('/api', loginRouter.routes(), loginRouter.allowedMethods());
 router.use('/music', musicRouter.routes(), musicRouter.allowedMethods())
+router.use('/upload', handleRouter.routes(), handleRouter.allowedMethods())
 //加载路由中间件
-app.use(router.routes()).use(router.allowedMethods());
+
+app.use(cors()).use(router.routes()).use(router.allowedMethods());
 
 
 // const convert = require('koa-convert');

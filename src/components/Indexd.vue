@@ -7,12 +7,24 @@
     <p class="tc">敬你的孤独择日而终!</p>
     <!-- <mt-cell to="/hello" is-link>酒已酿好，等你来听</mt-cell> -->
     <p @click="sdff">你好</p>
-    
+    <!-- <form action="http://localhost:8888/upload/jpg" method="post" enctype="multipart/form-data">  
+        <input type="file" name="file"/>  
+        <input type="submit" value="ok"/>  
+    </form>  -->
+    <form ref="formfile" action="/upload/jpg" method="post" encType="multipart/form-data"  >
+      <p>
+        <input type="file" name="avatar" />
+      </p>
+      <p @click='loadform'>
+        确认上传
+      </p>
+    </form>
   </div>
 </template>
 
 <script>
 import api from '../axios.js'
+// import axios from 'axios.js'
 export default {
   data(){
     return {
@@ -48,6 +60,30 @@ export default {
         }).catch((err) => {
           console.log(err);
         })
+    },
+    async loadform(){
+      const formData=new FormData(this.$refs.formfile)
+      const res = await fetch('http://localhost:8888/upload/jpg',{
+        method:"POST",
+        headers:{
+          "Access-Control-Allow-Origin":"*"
+        },
+        body:formData
+      }).then((data)=>{return data.json()})
+      // const dizhi = res.filename
+      this.$message({
+        tyep:'success',
+        message:res.success
+      })
+      // axios.post(,formData)
+      // api.Uploadfile(formData).then(response => {
+      //       console.log(response);
+      //       this.$message({
+      //         tyep:'success',
+      //         message:'上传'
+      //       })
+      //     }).catch((err)=>{console.log(err)})
+      
     },
     logout() {
       //清除token

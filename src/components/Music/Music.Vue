@@ -20,7 +20,6 @@
 <script>
 // import api from '../axios.js'
 import {jumpmaodian} from '../../handle/fun.js'
-console.log(jumpmaodian)
 import axios from 'axios'
 export default {
   data(){
