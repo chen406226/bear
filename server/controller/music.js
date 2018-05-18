@@ -231,6 +231,10 @@ const Detail = async( ctx ) => {
     }
 };
 
+
+// var mongoose = require('mongoose');
+// var id = mongoose.Types.ObjectId();
+
 module.exports = {
     Infos,Create,Comment,GetlimitMusic,Detail
 };

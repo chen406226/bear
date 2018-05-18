@@ -18,6 +18,7 @@
       <p @click='loadform'>
         确认上传
       </p>
+      <p ref="link"></p>
     </form>
   </div>
 </template>
@@ -28,7 +29,8 @@ import api from '../axios.js'
 export default {
   data(){
     return {
-      users: ''
+      users: '',
+      haha:'ssdfdf<a href="http://www.baidu.com">lai</a><img src="static/img/girl.png" />sdf'
     }
   },
   created(){
@@ -41,6 +43,9 @@ export default {
     //     this.users = response.data.result;
     //   }
     // });
+  },
+  mounted(){
+    this.$refs.link.innerHTML = this.haha
   },
   methods: {
     del_user(index, event){

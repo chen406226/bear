@@ -12,7 +12,7 @@ db.on('open', function(){
     console.log('数据库连接成功！');
 });
 
-//声明schema
+//创建用户schema
 const userSchema = mongoose.Schema({
     username: String,
     password: String,
@@ -22,11 +22,14 @@ const userSchema = mongoose.Schema({
     token: String,  
     create_time: Date
 });
-
+//创建音乐schema
 const musicSchema = mongoose.Schema({
     id:Number,
     create_user: String,
     createtext:String,
+    msg:[{
+        from:String,
+    }],
     songinfo: {
         id:Number,
         artistname:String,
@@ -37,9 +40,30 @@ const musicSchema = mongoose.Schema({
         text:String
     }]
 })
+//创建文章schema
+const articleSchema = mongoose.Schema({
+    id:Number,
+    create_user: String,
+    createtext:String,
+    url:[String],
+    comment:[{
+        username:String,
+        text:String
+    }]
+})
 
-
-
+// db.product.find({"parameSet":{"$elemMatch":{"564c408fe4b005ef3b0c1a69":"KFFF"}}})
+//创建分享schema
+const shareSchema = mongoose.Schema({
+    id:Number,
+    create_user: String,
+    createtext:String,
+    link:String,
+    comment:[{
+        username:String,
+        text:String
+    }]
+})
 //根据schema生成model
 const model = {
     User: mongoose.model('User', userSchema),

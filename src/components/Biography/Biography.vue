@@ -48,6 +48,7 @@
 <script>
 import {getParam,jumpmaodian} from '../../handle/fun.js'
   export default {
+    name:'biography',
     data(){
       return {
         path:'/biography/detail'
