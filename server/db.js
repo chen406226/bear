@@ -29,6 +29,7 @@ const musicSchema = mongoose.Schema({
     createtext:String,
     msg:[{
         from:String,
+        readed:false
     }],
     songinfo: {
         id:Number,
