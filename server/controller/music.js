@@ -22,7 +22,7 @@ const findMusic = (id) => {
 //按需查找
 const findlimitMusic = (page,pageSize) => {
     return new Promise((resolve, reject) => {
-        Music.find({},null,{ skip:(page-1)*pageSize },{ limit:pageSize }, (err, doc) => {
+        Music.find({}).sort({_id:-1}).skip((page-1)*pageSize).limit(pageSize).exec((err, doc) => {
             if(err){
                 reject(err);
             }
@@ -128,6 +128,7 @@ const Create = async ( ctx ) => {
         createtext : ctx.request.body.createtext,
         create_user : ctx.request.body.create_user,
     });
+    music.create_time = moment(objectIdToTimestamp(music._id)).format('YYYY-MM-DD HH:mm');
     let doc = await findMusic(music.id);
     if(doc){ 
         console.log('歌曲已经存在');
@@ -148,7 +149,8 @@ const Create = async ( ctx ) => {
         console.log('创建成功');
         ctx.status = 200;
         ctx.body = {
-            success: true
+            success: true,
+            mes:'创建成功'
         }
     }
 };
@@ -168,7 +170,6 @@ const GetlimitMusic = async( ctx ) => {
     //查询所有用户信息
     let page = ctx.request.body.page;
     let pageSize = ctx.request.body.pageSize;
-    
     let doc = await findlimitMusic(page,pageSize);
     ctx.status = 200;
     ctx.body = {

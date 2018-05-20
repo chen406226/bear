@@ -121,7 +121,6 @@ const router = new Router({
       component: Music 
     },{
       path: '/music/create',
-      name: 'biography',
       component: CreateMusic,
     },{
       path: '/music/detail',

@@ -20,26 +20,27 @@ const userSchema = mongoose.Schema({
     avatar:String,  //用户头像地址
     signature:String,  //个性签名
     token: String,  
-    create_time: Date
+    create_time: Date,
+    msg:[{
+        from:String,
+        readed:false
+    }]
 });
 //创建音乐schema
 const musicSchema = mongoose.Schema({
     id:Number,
     create_user: String,
     createtext:String,
-    msg:[{
-        from:String,
-        readed:false
-    }],
     songinfo: {
-        id:Number,
+        name:String,
         artistname:String,
         slbumname:String
     },
     comment:[{
         username:String,
         text:String
-    }]
+    }],
+    create_time:Date
 })
 //创建文章schema
 const articleSchema = mongoose.Schema({
