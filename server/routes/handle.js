@@ -18,7 +18,7 @@ var storage = multer.diskStorage({
 })  
 //加载配置  
 var uploadm = multer({ storage: storage });  
-var upload = uploadm.single('avatar')
+var upload = uploadm.single('file')
 //路由  
 childRouter.post('/jpg',upload, async (ctx, next) => {  
   // var form = new formidable.IncomingForm();

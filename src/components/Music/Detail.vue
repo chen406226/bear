@@ -33,12 +33,41 @@
       </div>
       <div class="comment">
         <ul>
-          <li v-for="item in data.comment.reverse()" :key="item.id">
+          <li v-for="item in reverse" :key="item._id">
             <div>
-              
+              <p :style="{textAlign:'center'}">
+                <span>过客：</span><span>{{item.username}}</span>
+              </p>
+                
+            <!-- <span>{{timem(item._id)}}</span> -->
+            <p :style="{textIndent:'2em'}">{{item.text}}</p>
             </div>
           </li>
         </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="canel" @click="cancel">
+        返回
+      </div>
+      <div class="ok" @click="ok">
+        my store
+      </div>
+    </div>
+    <!-- <mt-popup
+      v-model="popupVisible"
+      position="right"
+      :closeOnClickModal="fs"
+    >
+      <div class="txt">
+        <textarea @input="input" ref='textarea' placeholder="说点什么吧！" autosize v-model="txt"></textarea>
+        <div></div>
+      </div>
+    </mt-popup> -->
+    <div ref="pp" class="dialog" v-show="popupVisible">
+      <div class="txt">
+        <textarea @input="input" ref='textarea' placeholder="说点什么吧！" autosize v-model="txt"></textarea>
+
       </div>
     </div>
   </div>
@@ -48,30 +77,38 @@
 import api from '../../axios.js'
 import {getParam} from '../../handle/fun.js'
 import moment from 'moment'
-
+import { Indicator } from 'mint-ui';
   export default {
     data(){
       return {
         id:null,
         data:null,
         playing : false,
-
+        popupVisible:false,
+        fs:false,
+        txt:'',
       }
     },
     created(){
       console.log()
     },
+    updated(){
+      
+    },
     mounted(){
+      this.$refs.pp.style.height = window.screen.height + 'px'
       
       // const id = getParam(window.location.href, 'id')
       this.id = this.$route.query.id;
       this.getMusic({id:this.id})
-      
     },
+
     methods:{
       async getMusic(pa){
+        Indicator.open('加载中...');
         const res = await api.DetailMusic(pa)
         this.data = res.data;
+        Indicator.close();
       },
       playsong(){
         setTimeout(()=>{
@@ -90,6 +127,24 @@ import moment from 'moment'
       time(d){
         return moment(d).format('YYYY-MM-DD hh:mm')
       },
+      timem(id){
+        // moment(objectIdToTimestamp(id)).format('YYYY-MM-DD HH:mm:ss')
+      },
+      cancel(){
+        window.history.back();
+      },
+      ok(){
+        this.popupVisible = true
+      },
+      input(e){
+        e.target.style.height = e.target.scrollHeight + "px"
+
+      }
+    },
+    computed:{
+      reverse(){
+        return this.data.comment.reverse()
+      }
     }
   }
 </script>
@@ -98,6 +153,8 @@ import moment from 'moment'
 .ji{
   width:7.5rem;
   font-size: 16px;
+  height: 100%;
+    overflow-y: scroll;
   .bg{
     // background: url('/static/img/car.png') no-repeat;
     // background-size: 100% auto;
@@ -142,8 +199,62 @@ import moment from 'moment'
     }
     .text{
       border-top: 1px dashed #ddd;
-      border-bottom: 0.2rem solid #ccc;
+      border-bottom: 0.2rem solid Purple;
       // background-color: #ccc;
     }
+    .comment{
+      ul{
+        li{
+          border-bottom: 0.2rem solid #ccc;
+          &:last-child{
+            border: 0;
+          }          
+        }
+      }
+    }
+  .footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 0.8rem;
+    width: 7.5rem;
+    display: flex;
+    div{
+      flex: 1;
+      border-top: 1px solid #ccc;
+      font-size: 0.5rem;
+      color: #ea2000;
+      line-height: 0.8rem;
+      background-color: #fff;
+      &:nth-child(2){
+        color: #fff;
+        background-color: #ea2000;
+      }
+    }
+  }
+  .txt{
+    width: 7.5rem;
+    height: 5rem;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    textarea{
+      padding: 0.2rem 0.3rem;
+      height:0.7rem;
+      width: 7.5rem;
+    }
+    div{
+      height: 0.8rem;
+    }
+  }
+  .dialog{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ddd;
+    textarea{
+      background-color: #ddd;
+    }
+  }
 }
 </style>
