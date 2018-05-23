@@ -69,6 +69,14 @@
         <textarea @input="input" ref='textarea' placeholder="说点什么吧！" autosize v-model="txt"></textarea>
 
       </div>
+      <div class="footer">
+        <div class="canel" @click="close">
+          取消
+        </div>
+        <div class="ok" @click="submit">
+          提交
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -76,6 +84,7 @@
 <script>
 import api from '../../axios.js'
 import {getParam} from '../../handle/fun.js'
+import {mapGetters, mapActions} from 'vuex'
 import moment from 'moment'
 import { Indicator } from 'mint-ui';
   export default {
@@ -104,6 +113,9 @@ import { Indicator } from 'mint-ui';
     },
 
     methods:{
+      ...mapActions([
+        'showMsg',
+      ]),
       async getMusic(pa){
         Indicator.open('加载中...');
         const res = await api.DetailMusic(pa)
@@ -139,6 +151,24 @@ import { Indicator } from 'mint-ui';
       input(e){
         e.target.style.height = e.target.scrollHeight + "px"
 
+      },
+      close(){
+        this.popupVisible = false        
+      },
+      submit(){
+        if (!this.txt) {
+          this.showMsg('请输入!')
+          return;                
+        }
+        this.popupVisible = false
+        const par={
+          id:this.id,
+          username:'451969599',
+          text:this.txt
+        }
+        const res = api.AddMusicComment(par)
+        this.showMsg(res.mes)
+        this.getMusic({id:this.id})
       }
     },
     computed:{
@@ -254,6 +284,26 @@ import { Indicator } from 'mint-ui';
     background-color: #ddd;
     textarea{
       background-color: #ddd;
+    }
+    .fiexd{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 0.8rem;
+      width: 7.5rem;
+      display: flex;
+      div{
+        flex: 1;
+        border-top: 1px solid #ccc;
+        font-size: 0.5rem;
+        color: #ea2000;
+        line-height: 0.8rem;
+        background-color: #fff;
+        &:nth-child(2){
+          color: #fff;
+          background-color: #ea2000;
+        }
+      }
     }
   }
 }

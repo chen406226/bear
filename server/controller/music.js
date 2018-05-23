@@ -168,6 +168,7 @@ const GetAllUsers = async( ctx ) => {
 //获得部分
 const GetlimitMusic = async( ctx ) => {
     //查询所有用户信息
+    console.log(34)
     let page = ctx.request.body.page;
     let pageSize = ctx.request.body.pageSize;
     let doc = await findlimitMusic(page,pageSize);
@@ -196,7 +197,7 @@ const Comment = async( ctx ) => {
     await addComment(id,username,text)
     ctx.status = 200;
     ctx.body = {
-        success: '评论成功'
+        mes: '评论成功'
     };
 };
 

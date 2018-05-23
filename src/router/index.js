@@ -59,6 +59,12 @@ const Biography = resolve => {
   });
 };
 
+const My = resolve => {
+  require.ensure(['../components/My/My.vue'], () => {
+    resolve(require('../components/My/My.vue'));
+  });
+};
+
 const Article = resolve => {
   require.ensure(['../components/Article/Article.vue'], () => {
     resolve(require('../components/Article/Article.vue'));
@@ -139,7 +145,10 @@ const router = new Router({
     },{
       path: '/article/create',
       component: CreateArticle,
-    },
+    },{
+      path: '/my/info',
+      component: My,      
+    }
   ]
 });
 
