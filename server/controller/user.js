@@ -20,6 +20,18 @@ const findUser = (username) => {
     });
 };
 //找到所有用户
+const updateUser = function(username,key,value){
+    return new Promise(( resolve, reject) => {
+        User.update({ username },{'$set':{[key]:value}},(err,data)=>{
+            if (err) {
+                reject(err);
+            }
+            resolve();
+        })
+    });
+};
+
+
 const findAllUsers = () => {
     return new Promise((resolve, reject) => {
         User.find({}, (err, doc) => {
@@ -143,6 +155,19 @@ const DelUser = async( ctx ) => {
     };
 };
 
+const Update = async( ctx ) => {
+    //拿到要删除的用户id
+    let username = ctx.request.body.username;
+    let key = ctx.request.body.key;
+    let value = ctx.request.body.value;
+    
+    await updateUser(username,key,value);
+    ctx.status = 200;
+    ctx.body = {
+        success: '更新成功'
+    };
+};
+
 const Infos = ( ctx ) => {
     //拿到要删除的用户id
     console.log(1232)
@@ -159,4 +184,5 @@ module.exports = {
     GetAllUsers,
     DelUser,
     Infos,
+    Update,
 };

@@ -62,6 +62,10 @@ export default {
     delUser(data){
         return instance.post('/api/delUser', data);
     },
+    //更新用户信息
+    UpdateUser(data){
+        return instance.post('/api/update', data);
+    },
     Infos(){
         return instance.get('/music/infos');
     },

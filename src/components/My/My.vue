@@ -21,15 +21,19 @@
     <input type="file" id="upload2" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/gif, image/jpg" @change="uploadImg($event, 2)">
     <button @click="finish2('base64')" class="btn">preview(base64)</button>
     </div>
+    <p>{{d}}}</p>
   </div>
 </template>
 
 <script>
 import VueCropper from '../../common/vue-cropper'
+import api from '../../axios.js'
+
 console.log(VueCropper)
   export default {
     data(){
       return {
+        d:'',
         example2: {
 					img: 'http://ofyaji162.bkt.clouddn.com/bg1.jpg',
 					info: true,
@@ -82,10 +86,17 @@ console.log(VueCropper)
         this.$refs.cropper2.getCropData((data) => {
           this.model = true
           this.modelSrc = data
-
-        console.log(data)
+          console.log(typeof data)
+          this.changeinfo(data)
         })
       },
+      async changeinfo(data){
+        const res = await api.UpdateUser({
+          username:'172221516',
+          key:'avatar',
+          value:data
+        })
+      }
     }
   }
 </script>
