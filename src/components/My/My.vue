@@ -46,7 +46,7 @@ console.log(VueCropper)
 					autoCropHeight: 250,
 					// 开启宽度和高度比例
 					fixed: true,
-					fixedNumber: [4, 3]
+					fixedNumber: [1, 1]
 				}
       }
     },

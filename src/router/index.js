@@ -65,6 +65,12 @@ const My = resolve => {
   });
 };
 
+const MyIndex = resolve => {
+  require.ensure(['../components/My/Index.vue'], () => {
+    resolve(require('../components/My/Index.vue'));
+  });
+};
+
 const Article = resolve => {
   require.ensure(['../components/Article/Article.vue'], () => {
     resolve(require('../components/Article/Article.vue'));
@@ -124,7 +130,7 @@ const router = new Router({
     },{
       path: '/music',
       name: 'music',
-      component: Music 
+      component: Music,
     },{
       path: '/music/create',
       component: CreateMusic,
@@ -148,6 +154,12 @@ const router = new Router({
     },{
       path: '/my/info',
       component: My,      
+    },{
+      path: '/my',
+      component: MyIndex,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 });

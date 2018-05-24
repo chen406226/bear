@@ -1,5 +1,7 @@
 <template>
     <div>
+        <div  :style="{marginTop:'2rem',paddingRight:'1rem'}">
+
         <el-form :model="regForm" :rules="rules" label-width="100px" ref="regForm">
             <el-form-item label="用户名" prop="username">
                 <el-input v-model="regForm.username"></el-input>
@@ -10,11 +12,13 @@
             <el-form-item label="确认密码" prop="checkPassword">
                 <el-input v-model="regForm.checkPassword" type="password"></el-input>
             </el-form-item>
-            <el-form-item>
-                <el-button type="primary" @click="submitForm('regForm')">注册</el-button>
-                <el-button @click="resetForm('regForm')" >重置</el-button>
-            </el-form-item>
         </el-form>
+        </div>
+
+        <div class="footer">
+            <el-button type="primary" @click="submitForm('regForm')">注册</el-button>
+            <el-button @click="resetForm('regForm')" >重置</el-button>
+        </div>
     </div>
 </template>
 
@@ -72,12 +76,13 @@ export default {
             this.$refs[formName].validate((valid) => {
                 if(valid){ //验证通过
                     api.userRegister(this.regForm)
-                        .then(({ data }) => { 
+                        .then(( data ) => { 
                             if(data.success){
                                 this.$message({
                                     type: 'success',
                                     message: '注册成功'
                                 });
+                                this.$router.push('/login')
                             }else{
                                 this.$message({
                                     type: 'info',
@@ -94,6 +99,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+.footer{
+    position: fixed;
+    width: 7.5rem;
+    bottom: 1rem;
+    left: 0;
+    // display: flex;
+    // justify-content: center;
+}
     
 </style>

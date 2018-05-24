@@ -66,7 +66,8 @@ const Login = async ( ctx ) => {
         console.log('检查到用户名不存在');
         ctx.status = 200;
         ctx.body = {
-            info: false
+            success:false,
+            mes:'用户不存在'
         }
     }else if(doc.password === password){
         console.log('密码一致!');
@@ -95,7 +96,8 @@ const Login = async ( ctx ) => {
         console.log('密码错误!');
         ctx.status = 200;
         ctx.body = {
-            success: false
+            success: false,
+            mes:'密码错误'
         };
     }
 };
