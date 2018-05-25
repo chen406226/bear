@@ -153,13 +153,14 @@ const router = new Router({
       component: CreateArticle,
     },{
       path: '/my/info',
-      component: My,      
+      component: My,     
+      meta: {
+        requiresAuth: true
+      } 
     },{
       path: '/my',
       component: MyIndex,
-      meta: {
-        requiresAuth: true
-      }
+    
     }
   ]
 });

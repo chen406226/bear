@@ -1,16 +1,22 @@
 <template>
   <div>
     <header>
-      <div class="infot">
-        <div class="avatar">
-          <img v-if="avatar" :src="'static/img/'+avatar" :style="{borderRadius:'50%'}" />
-          <img v-else src="static/img/default.jpg" :style="{borderRadius:'50%'}" />
+      <div class="shadow"></div>
+      <div class="header">
+        <div class="infot">
+          <div class="avatar">
+            <img v-if="avatar" :src="'static/img/'+avatar" :style="{borderRadius:'50%'}" />
+            <img v-else src="static/img/default.jpg" :style="{borderRadius:'50%'}" />
+          </div>
         </div>
-
+        <div class="info">
+          <h3>{{username}}</h3>
+          <span>个性签名 ：</span>
+          <div class="oo">{{signature}}大师傅付付付付付付付付付阿凡达所所所所所所阿斯蒂付付付付付师范大啊啊啊啊啊啊啊啊撒的发</div>
+        </div>
       </div>
-      <div class="info">
-        <p>{{username}}</p>
-        <p>个性签名 ： {{signature}}</p>
+      <div class="fot">
+
       </div>
     </header>
     <section>
@@ -57,35 +63,57 @@
 <style scoped lang="less">
 header{
   font-size: 16px;
-  
+  // position: relative;
   width: 7.5rem;
   background: url('../../../static/img/car.png') no-repeat;
   opacity: 0.9;
   background-size: 100% auto;
-  display: flex;
   height: 4.8rem;
-  .infot{
-    opacity: .6;
-    background-color: #fff;    
-    .avatar{
-      width: 1.5rem;
-      height: 1.5rem;
-      margin: 0.5rem;
-      overflow: hidden;
-      border-radius: 50%;
-      display: flex;
-      justify-content:center;
-      align-items:center;
-      img{
+  .shadow{
+     opacity: .6;
+    background-color: #000;    
+    width: 7.5rem;
+    height: 4.8rem;
+  }
+  .header{
+    position: absolute;
+    left: 0;
+    top: 0;
+   
+    display: flex;
+    height: 2.5rem;
+    .infot{
+      .avatar{
         width: 1.5rem;
         height: 1.5rem;
+        margin: 0.5rem;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        img{
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+    .info{
+      width: 5rem;
+      color: #fff;
+      padding-top: .5rem;
+      text-align: left;
+      height: 2.5rem;
+      .oo{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
       }
     }
   }
-  .info{
-    width: 5rem;
-    opacity: .6;
-    background-color: #fff;
+  .fot{
+    height: 2.3rem;
   }
 }
 section{
