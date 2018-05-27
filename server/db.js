@@ -26,6 +26,17 @@ const userSchema = mongoose.Schema({
         readed:false
     }]
 });
+//创建系统数据
+const systemSchema = mongoose.Schema({
+    id:Number,
+    count: Number,
+    regcount: Number,
+    msg:[{
+        create_time: Date,
+        text:String,
+        type:String
+    }]
+});
 //创建音乐schema
 const musicSchema = mongoose.Schema({
     id:Number,
@@ -69,7 +80,8 @@ const shareSchema = mongoose.Schema({
 //根据schema生成model
 const model = {
     User: mongoose.model('User', userSchema),
-    Music:mongoose.model('Music',musicSchema)
+    Music:mongoose.model('Music',musicSchema),
+    System:mongoose.model('System',systemSchema),
 };
 
 module.exports = model;

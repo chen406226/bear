@@ -7,6 +7,8 @@
 
 <script>
 import Msg from './common/Msg.vue'
+import api from './axios.js'
+
 export default {
   name: 'app',
   methods: {
@@ -14,10 +16,15 @@ export default {
         let deviceWidth = document.documentElement.clientWidth;
         // if(deviceWidth > 750) deviceWidth = 750;
         document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px';
+      },
+      async getcount(){
+        const res = api.getCount()
+        // console.log(res)
       }
     },
     mounted() {
       this.resize_font()
+      this.getcount()
     },
     components: {
       Msg

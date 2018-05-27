@@ -46,6 +46,10 @@ instance.interceptors.response.use(
 );
 
 export default {
+    //得到系统数据
+    getCount(){
+        return instance.get('/api/count')
+    },
     //用户注册
     userRegister(data){
         return instance.post('/api/register', data);
