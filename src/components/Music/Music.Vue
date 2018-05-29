@@ -47,7 +47,7 @@
               </div>
               <div>
 
-              <p :style="{color:'#666',textIndent:'2em'}" class="zi">{{item.createtext}}</p>
+              <p :style="{color:'#666',textIndent:'2em'}" class="zi">{{item.createtext}}弄啥嘞；加法；as；打飞机；拉看见对方；卡是否加；时代峰峻克拉斯发斯蒂芬加；伺服电机三；加法阿萨德飞机； 撒娇地方；看撒大家反馈；撒的发接口；阿双方技术的积分；老是发动机；按时交电费；拉萨的积分；加快第三方；打卡；老是发动机；阿撒地方；是否卡飞卡奥斯卡京东方卡；的付款</p>
               </div>
             </div>
             <div class="footer">
@@ -240,11 +240,27 @@ export default {
       }
     }
     .text{
-      .zi{
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
+      width: 100%;
+      p.zi{
         overflow: hidden;
+        // word-break: break-all;
+        // display: -webkit-box;
+        // -webkit-box-orient: vertical;
+        // text-overflow: ellipsis;
+        // -webkit-line-clamp: 3;
+        position: relative;
+        line-height: 1.4em;
+        height: 4.2em;
+        &::after{
+          content: '...';
+          font-weight: bold;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          padding: 0 20px;
+          background-color: #eee;
+          background: -webkit-linear-gradient(left,rgba(255,255,255,0) 0%,rgba(238,238,238,1) 50%,rgba(238,238,238,1) 100%);
+        }
       }
       // box-shadow:0 -12px 5px rgba(255,255,255,1);
     }

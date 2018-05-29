@@ -16,6 +16,8 @@ const state = {
         content: 'saf',
         time: 2000
     },
+    count:0,
+    regcount:0,
 };
 
 export default new Vuex.Store({

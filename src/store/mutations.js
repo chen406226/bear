@@ -31,6 +31,12 @@ const mutations = {
             state.msg.show = false
         },state.msg.time)
     },
+    [types.COUNT]: (state, num) => {
+        state.count = num;
+    },
+    [types.REGCOUNT]: (state, num) => {
+        state.regcount = num;
+    }
 };
 
 export default mutations;

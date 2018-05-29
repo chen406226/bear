@@ -5,6 +5,7 @@
     <p>故事或许不够美好，好在酒水管饱。我知道，每个人的世界都有不同，但这些故事里的世界，一定是你似曾相识又触摸不到的另一面，它就像夜里的酒，早上的花儿，平淡又真实，美好又残酷。</p>
     <p class="tc pt">愿我们的故事绿水长流~</p>
     <p class="tc">敬你的孤独择日而终!</p>
+    <p><span>已浏览人次</span><span>{{count}}</span><span>已注册人次</span><span>{{regcount}}</span></p>
     <!-- <mt-cell to="/hello" is-link>酒已酿好，等你来听</mt-cell> -->
     <p @click="sdff">你好</p>
     <!-- <form action="http://localhost:8888/upload/jpg" method="post" enctype="multipart/form-data">  
@@ -43,6 +44,14 @@ export default {
     //     this.users = response.data.result;
     //   }
     // });
+  },
+  computed:{
+    count(){
+      return this.$store.getters.count
+    },
+    regcount(){
+      return this.$store.getters.regcount
+    },
   },
   mounted(){
     this.$refs.link.innerHTML = this.haha

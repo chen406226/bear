@@ -18,8 +18,11 @@ export default {
         document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px';
       },
       async getcount(){
-        const res = api.getCount()
-        // console.log(res)
+        const res =await api.getCount()
+        if (res.success) {
+          this.$store.commit('COUNT',res.count)
+          this.$store.commit('REGCOUNT',res.regcount)
+        }
       }
     },
     mounted() {

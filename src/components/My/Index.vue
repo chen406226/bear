@@ -12,7 +12,7 @@
         <div class="info">
           <h3>{{username}}</h3>
           <span>个性签名 ：</span>
-          <div class="oo">{{signature}}大师傅付付付付付付付付付阿凡达所所所所所所阿斯蒂付付付付付师范大啊啊啊啊啊啊啊啊撒的发</div>
+          <div class="oo">{{signature}}</div>
         </div>
       </div>
       <div class="fot">
@@ -106,9 +106,24 @@ header{
       height: 2.5rem;
       .oo{
         overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
+        // word-break: break-all;
+        // display: -webkit-box;
+        // -webkit-box-orient: vertical;
+        // text-overflow: ellipsis;
+        // -webkit-line-clamp: 3;
+        // position: relative;
+        // line-height: 1.4em;
+        height: 4.2em;
+        // &::after{
+        //   content: '...';
+        //   font-weight: bold;
+        //   position: absolute;
+        //   bottom: 0;
+        //   right: 0;
+        //   padding: 0 20px 0 40px;
+        //   background-color: #eee;
+        //   background: -webkit-linear-gradient(left,rgba(0,0,0,0) 0%,rgba(0,0,0,.6) 50%,rgba(0,0,0,.6) 100%);
+        // }
       }
     }
   }

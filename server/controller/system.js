@@ -51,6 +51,7 @@ const Getcount = async ( ctx ) => {
             count: 1,
             regcount: 0,
         });
+        console.log('reg')
       await new Promise((resolve, reject) => {
         system.save((err) => {
               if(err){
@@ -66,15 +67,40 @@ const Getcount = async ( ctx ) => {
           regcount:system.regcount,
       }
     }else{
-      ctx.status = 200;
-      ctx.body = {
-          success: true,
-          count:doc.count,
-          regcount:doc.regcount,
-      }
+        doc.count =doc.count+1;
+        await new Promise((resolve, reject) => {
+            doc.save((err,produce) => {
+                if(err){
+                    reject(err);
+                }
+                resolve();
+                ctx.status = 200;
+                ctx.body = {
+                    success: true,
+                    count:produce.count,
+                    regcount:produce.regcount,
+                }
+            });
+        });
     }
 };
 
+const Setregcount = async ( ) => {
+    //拿到账号和密码
+    let doc = await findSystem(1);
+    doc.regcount =doc.regcount+1;
+    await new Promise((resolve, reject) => {
+        doc.save((err,produce) => {
+            if(err){
+                reject(err);
+            }
+            resolve();
+        });
+    });
+    
+};
+
 module.exports = {
-    Getcount
+    Getcount,
+    Setregcount
 };

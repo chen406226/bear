@@ -1,4 +1,5 @@
 const User = require('../db.js').User;
+const system = require('./system.js')
 //下面这两个包用来生成时间
 const moment = require('moment');
 const objectIdToTimestamp = require('objectid-to-timestamp');
@@ -126,6 +127,7 @@ const Reg = async ( ctx ) => {
                     reject(err);
                 }
                 resolve();
+                system.Setregcount();
             });
         });
         console.log('注册成功');
@@ -172,8 +174,6 @@ const Update = async( ctx ) => {
 
 const Infos = ( ctx ) => {
     //拿到要删除的用户id
-    console.log(1232)
-    console.log(ctx)
     ctx.status = 200;
     ctx.body = {
         success: '删除成功'
