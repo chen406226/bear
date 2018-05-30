@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Head></Head>
     <div class="header">
       <img src="static/img/persons.png">
       <a name="ppp"></a>
@@ -47,12 +48,17 @@
 
 <script>
 import {getParam,jumpmaodian} from '../../handle/fun.js'
+import Head from '../../common/Head.vue'
+
   export default {
     name:'biography',
     data(){
       return {
         path:'/biography/detail'
       }
+    },
+    components:{
+      Head
     },
     mounted(){
       const id = getParam(window.location.href, 'id')
@@ -66,6 +72,7 @@ import {getParam,jumpmaodian} from '../../handle/fun.js'
 
 <style scoped lang="less">
   .header{
+    padding-top: 0.5rem;
     overflow:hidden;    
     img{
       width: 100%;

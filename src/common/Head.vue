@@ -25,7 +25,13 @@
 </script>
 <style lang="less" scoped>
   .nav-header{
-    width: 100%;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: #fff;
+    width: 7.5rem;
+    height: 0.6rem;
+    z-index: 8888888;
     header{
       display:flex;
       width: 100%;
@@ -36,7 +42,7 @@
       align-items: center;
       font-size: 20px;
       position: relative;
-      z-index: 99999999999999;
+      z-index: 88888888;
       i{
         display: block;
         width: 0.5rem;

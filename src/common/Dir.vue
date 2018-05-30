@@ -2,10 +2,21 @@
   <div class="dir">
     <div class="dircon">
       <header>
-        <h3>目录</h3>
+        <h3>导航</h3>
       </header>
       <section>
-       
+        <div class="link" @click="haha('music')">
+          <span class="mes">音乐</span>
+          <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
+        </div>
+        <div class="link" @click="haha('article')">
+          <span class="mes">图文</span>
+          <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
+        </div>
+        <div class="link" @click="haha('biography')">
+          <span class="mes">传记</span>
+          <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
+        </div>
       </section>
     </div>
     <div class="bg" @click="exitdir" ></div>
@@ -36,6 +47,10 @@
         this.dirlist=this.dirlist.reverse();
         localStorage.setItem("reverse",this.reverse)
       },
+      haha(path){
+        this.$store.commit('CHANGEDIR',false)
+        this.$router.push(path)
+      },
       exitdir(){
         // this.$props.setindex.showidx = -1;
         this.$store.commit('CHANGEDIR',false)
@@ -63,6 +78,8 @@
     top: 0;
     display: flex;
     height: 100%;
+    z-index: 99999999;
+    font-size: 16px;
     .dircon{
       flex: 1;
       height: 100%;
@@ -93,6 +110,19 @@
         overflow-y: auto;
         box-sizing: border-box;
         // padding-left: 10px;
+        .link{
+          height: 1rem;
+          line-height: 1rem;
+          margin-left: 0.2rem;
+          border-bottom: 1px solid #ccc;
+          .mes{
+            width: 4rem;
+          }
+          .count{
+            width: 2rem;
+            color:#ea2000;
+          }
+        }
         p{
           width: 100%;
           overflow: hidden;

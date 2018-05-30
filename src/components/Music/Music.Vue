@@ -48,7 +48,7 @@
               </div>
               <div>
 
-              <p :style="{color:'#666',textIndent:'2em'}" class="zi">{{item.createtext}}弄啥嘞；加法；as；打飞机；拉看见对方；卡是否加；时代峰峻克拉斯发斯蒂芬加；伺服电机三；加法阿萨德飞机； 撒娇地方；看撒大家反馈；撒的发接口；阿双方技术的积分；老是发动机；按时交电费；拉萨的积分；加快第三方；打卡；老是发动机；阿撒地方；是否卡飞卡奥斯卡京东方卡；的付款</p>
+              <p :style="{color:'#666',textIndent:'2em'}" class="zi">{{item.createtext}}</p>
               </div>
             </div>
             <div class="footer">
@@ -75,7 +75,7 @@
         返回
       </div>
       <div class="ok" @click="ok">
-        确定
+        添加专题
       </div>
     </div>
   </div>

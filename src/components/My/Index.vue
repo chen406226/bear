@@ -65,7 +65,7 @@
         //清除token
         this.$store.dispatch('UserLogout');
         if (!this.$store.state.token) {
-            this.$router.push('/login')
+            this.$router.push('/music')
             this.$message({
                 type: 'success',
                 message: '登出成功'

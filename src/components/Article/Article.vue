@@ -1,5 +1,6 @@
 <template>
   <div class="indexd">
+    <Head></Head>
     <!-- <ul
     ref="scrolls"
   v-infinite-scroll="loadMore"
