@@ -10,3 +10,5 @@ export const SHOW_MSG = 'SHOW_MSG';
 export const REGCOUNT = 'REGCOUNT';
 //浏览次数
 export const COUNT = 'COUNT';
+
+export const CHANGEDIR = 'CHANGEDIR';

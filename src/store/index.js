@@ -18,6 +18,7 @@ const state = {
     },
     count:0,
     regcount:0,
+    showDir:false,
 };
 
 export default new Vuex.Store({

@@ -2,16 +2,25 @@
   <div id="app">
     <router-view></router-view>
     <Msg></Msg>
+    <transition name="bar">
+      <Dir v-if="dir()"  ></Dir>
+    </transition> 
+    <p v-if="dir()">你好</p>
   </div>
 </template>
 
 <script>
 import Msg from './common/Msg.vue'
 import api from './axios.js'
+import Dir from './common/Dir.vue'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'app',
   methods: {
+      ...mapGetters([
+        'dir',
+      ]),
       resize_font() {
         let deviceWidth = document.documentElement.clientWidth;
         // if(deviceWidth > 750) deviceWidth = 750;
@@ -26,11 +35,12 @@ export default {
       }
     },
     mounted() {
+      console.log(this.dir())
       this.resize_font()
       this.getcount()
     },
     components: {
-      Msg
+      Msg,Dir
     }
 }
 </script>

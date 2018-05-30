@@ -1,5 +1,6 @@
 <template>
   <div class="indexd">
+    <Head></Head>
     <div class="bg">
       <img src="static/img/musicbg.jpg">
       <div class="txtjump">
@@ -83,6 +84,8 @@
 <script>
 import api from '../../axios.js'
 import {jumpmaodian} from '../../handle/fun.js'
+import Head from '../../common/Head.vue'
+
 import axios from 'axios'
 import moment from 'moment'
 export default {
@@ -114,6 +117,9 @@ export default {
     //     this.users = response.data.result;
     //   }
     // });
+  },
+  components:{
+    Head
   },
   methods: {
     async getmusic(){

@@ -38,6 +38,32 @@
         .ovh {
             overflow: hidden;
         }
+        .dragf{
+			position: relative;
+		}
+		.dragc{
+			position: absolute;
+		}
+		.bar-enter-active,.bar-leave-active,.setting-enter-active,.setting-leave-active
+		.plan-enter-active,.plan-leave-active{
+			transition: all 0.5s linear 0s;			
+		}
+		.bar-enter-active{
+			width: 100%;
+		}
+		.bar-leave-active,.bar-enter{
+			/* 清除原有参数的影响 */
+			width: 0 !important;
+		}
+		.setting-enter,.setting-leave-active{
+			opacity: 0 ;
+		}
+		.plan-leave-active,.plan-enter{
+			height: 0 !important;
+		}
+		.plan-enter-active{
+			height: 100px;
+		}
     </style>
   </head>
   <body>

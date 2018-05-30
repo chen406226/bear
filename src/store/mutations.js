@@ -36,6 +36,10 @@ const mutations = {
     },
     [types.REGCOUNT]: (state, num) => {
         state.regcount = num;
+    },
+    [types.CHANGEDIR]: (state, v) => {
+        state.showDir = v;
+        console.log(v)
     }
 };
 

@@ -45,6 +45,9 @@
         <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
       </router-link>
     </section>
+    <div class="logout">
+      <mt-button type="danger" @click="logout">退出登录</mt-button>
+    </div>
   </div>
 </template>
 
@@ -56,7 +59,26 @@
         username:'saka',
         signature:''
       }
-    }
+    },
+    methods:{
+      logout() {
+        //清除token
+        this.$store.dispatch('UserLogout');
+        if (!this.$store.state.token) {
+            this.$router.push('/login')
+            this.$message({
+                type: 'success',
+                message: '登出成功'
+            })
+        } else {
+            this.$message({
+                type: 'info',
+                message: '登出失败'
+            })
+        }
+      },
+    },
+
   }
 </script>
 
@@ -129,6 +151,11 @@ header{
   }
   .fot{
     height: 2.3rem;
+  }
+  .logout{
+    position: fixed;
+    bottom: 0;
+
   }
 }
 section{

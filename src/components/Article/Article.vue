@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import Head from '../../common/Head.vue'
 
 export default {
   data(){
@@ -47,6 +48,9 @@ export default {
   mounted(){
     this.$refs.scrolls.childNodes[0].childNodes[0].innerHTML = 'ck'
     // console.log(this.$refs.scrolls.childNodes[0])
+  },
+  components:{
+    Head
   },
   methods: {
     loadMore() {
