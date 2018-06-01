@@ -152,7 +152,7 @@ const router = new Router({
       path: '/article/create',
       component: CreateArticle,
     },{
-      path: '/my/info',
+      path: '/my/amend',
       component: My,     
       meta: {
         requiresAuth: true

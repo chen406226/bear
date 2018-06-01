@@ -5,7 +5,7 @@
       <div class="header">
         <div class="infot">
           <div class="avatar">
-            <img v-if="avatar" :src="'static/img/'+avatar" :style="{borderRadius:'50%'}" />
+            <img v-if="avatar" @click="cancel" :src="'static/img/'+avatar" :style="{borderRadius:'50%'}" />
             <img v-else src="static/img/default.jpg" :style="{borderRadius:'50%'}" />
           </div>
         </div>
@@ -68,17 +68,19 @@
             this.$router.push('/music')
             this.$message({
                 type: 'success',
-                message: '登出成功'
+                message: '退出成功'
             })
         } else {
             this.$message({
                 type: 'info',
-                message: '登出失败'
+                message: '退出失败'
             })
         }
       },
     },
-
+    cancel() {
+      this.$router.push({path:'/my/amend',query:{url:this.avatar,username:this.username}})
+    }
   }
 </script>
 

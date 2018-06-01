@@ -34,8 +34,10 @@ console.log(VueCropper)
     data(){
       return {
         d:'',
+        username:this.$route.query.username,
         example2: {
 					img: 'http://ofyaji162.bkt.clouddn.com/bg1.jpg',
+					// img: this.$route.query.url,
 					info: true,
 					size: 1,
 					outputType: 'jpeg',
