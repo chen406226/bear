@@ -8,7 +8,7 @@
   infinite-scroll-distance="10">
   <li v-for="item in list">{{item}}</li>
 </ul> -->
-  <mt-loadmore  :bottom-method="loadMore" :bottom-all-loaded="allLoaded" ref="loadmore">
+  <!-- <mt-loadmore  :bottom-method="loadMore" :bottom-all-loaded="allLoaded" ref="loadmore">
     <ul ref="scrolls">
       <li v-for="item in list">
         <div class="cont">
@@ -17,7 +17,9 @@
         <p>ni</p>
         {{ item }}</li>
     </ul>
-  </mt-loadmore>
+  </mt-loadmore> -->
+    <div style="border:1px solid red;marginTop:0.5rem;width:3rem;height:3rem;" ref='cutu'>
+      <img style="display:block;border:1px solid red" src="static/img/girl.png" /></div>
   </div>
 </template>
 
@@ -47,8 +49,10 @@ export default {
     // });
   },
   mounted(){
-    this.$refs.scrolls.childNodes[0].childNodes[0].innerHTML = 'ck'
+    this.ResizeImages()
+    // this.$refs.scrolls.childNodes[0].childNodes[0].innerHTML = 'ck'
     // console.log(this.$refs.scrolls.childNodes[0])
+
   },
   components:{
     Head
@@ -65,6 +69,22 @@ export default {
         this.allLoaded = false;
       }, 1500);
       console.log(23)
+    },
+    ResizeImages() {
+      var imgs = this.$refs.cutu.getElementsByTagName('img')
+      var myimg,oldwidth,oldheight;
+      var maxwidth=128;
+      var maxheight=128;
+      for(var i=0;i<imgs.length;i++){
+        myimg = imgs[i];
+        if(myimg.width > myimg.height) {
+          imgs[i].style.width = '100%';
+          imgs[i].style.height = 'auto';
+        }else{
+            imgs[i].style.height = '100%';
+          imgs[i].style.width = 'auto';
+        }
+      }
     },
     getlist() {
 

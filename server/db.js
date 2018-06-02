@@ -53,6 +53,17 @@ const musicSchema = mongoose.Schema({
     }],
     create_time:Date
 })
+//创建聊天
+const chartSchema = mongoose.Schema({
+    id:Number,
+    user1: String,
+    user2:String,
+    comment:[{
+        fromuser:String,
+        text:String,
+        create_time:Date
+    }]
+})
 //创建文章schema
 const articleSchema = mongoose.Schema({
     id:Number,

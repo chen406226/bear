@@ -5,17 +5,19 @@
 <template>
     <div class="father">
         <div class="content" v-if="!showPhoto">
-            <img class="icon_add" src="/static/img/my/icon_add.png" alt="">
+            <img class="icon_add" src="/static/img/icon_add.png" alt="">
             <p class="label" v-text="data.string"></p>
-            <input type="file" @change="clickUpload" ref="refString"
+            <!-- <form ref="formfile" action="/upload/jpg" method="post" encType="multipart/form-data"  > -->
+            <input type="file" @change="loadform" ref="refString" name="avatar"
                        accept="image/png,image/jpg" class="file"/>
+            <!-- </form> -->
         </div>
         <div class="imageContent" v-show="showPhoto" ref="less"></div>
     </div>
 </template>
 <script>
-    import API from '@/api'
-    import {mapGetters, mapActions} from 'vuex'
+import api from '../axios.js'
+import {mapGetters, mapActions} from 'vuex'
 
     export default {
         name: 'UploadPhotos',
@@ -42,6 +44,41 @@
             ...mapActions([
                 'showMsg'
             ]),
+            async loadform(){
+                // const formData=new FormData(this.$refs.formfile)
+                const formData=new FormData()
+                formData.append('avatar', this.$refs.refString.files[0])
+                
+                const res = await fetch('http://localhost:8888/upload/jpg',{
+                    method:"POST",
+                    headers:{
+                    "Access-Control-Allow-Origin":"*"
+                    },
+                    body:formData
+                }).then((data)=>{return data.json()})
+                // const dizhi = res.filename
+                console.log(res,'res')
+                if (res.success) {
+                    this.showPhoto = true;
+                    this.$props.data.showimg = true;
+                    this.imageUrl = "static/img/" + res.filename;
+                    // this.$props.data.imgurl = "static/img/" + res.filename;
+                    this.addstyle();
+                }
+                this.$message({
+                    tyep:'success',
+                    message:res.success
+                })
+                // axios.post(,formData)
+                // api.Uploadfile(formData).then(response => {
+                //       console.log(response);
+                //       this.$message({
+                //         tyep:'success',
+                //         message:'上传'
+                //       })
+                //     }).catch((err)=>{console.log(err)})
+            
+            },
             async clickUpload() {
                 // if (this.$refs.refString.files[0].size>2000000) {
                 //     this.showMsg('请上传小于2M的照片')
@@ -74,33 +111,41 @@
         },
         computed: {
             ...mapGetters([
-                'info'
             ])
         },
     }
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
     .father {
-        @include box((h:100%))
+        height: 100%;
     }
     .content {
-        @include box((w: 6.9rem, h: 2.96rem, c: #ccc, br: 1px dashed #e5e5e5));
-        padding-top: .9rem;
+        width: 6.9rem;
+        height: 2.96rem;
+        color: #ccc;
+        border: 1px dashed #e5e5e5;
+        margin:0 .3rem;
         background-color: #fff;
         text-align: center;
         position: relative;
 
         .icon_add {
-            @include box((w: .6rem, h: .6rem));
-        }
+            width: .6rem;
+            height: .6rem;
+    }
 
         .label {
             margin-top: .3rem;
         }
 
         .file {
-            @include position((p:absolute, t:0, l:0, z:1));
-            @include box((w:100%, h:100%, o:0));
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
         }
     }
 

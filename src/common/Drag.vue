@@ -1,34 +1,18 @@
 <template>
-  <div>
-    <UploadPhotos :data="list" />
-    <div class="txt">
-      <textarea @input="input" ref='textarea' placeholder="说点什么吧！" autosize v-model="txt"></textarea>
-      <div></div>
-    </div>
-    <!-- <div class="add" ref="shownav">
-        <img width="50" height="50" :src="dog" style="display:block" alt="">
-        <span>发表</span>
-    </div> -->
-    <Drag :click="send" text='发表'></Drag>
+  <div class="add" ref="shownav">
+      <img width="50" height="50" :src="dog" style="display:block" alt="">
+      <span>{{text}}</span>
   </div>
 </template>
 
 <script>
 // 下雨了你可能怪他没有出现给你撑伞
-import UploadPhotos from '../../common/UploadPhotos.vue'
-import Drag from '../../common/Drag.vue'
-import {mapActions} from 'vuex'
 
   export default {
     data() {
       return {
         txt:'',
         dog:'static/img/dog1.png', //'static/img/dog2.png'
-        list:{
-          string:'无图不言',
-          showimg:false,
-          imgurl:'',
-        },
         homexy:{
           x:50,
           y:50,
@@ -37,20 +21,14 @@ import {mapActions} from 'vuex'
       }
     },
     mounted() {
-      // this.addevent(this.$refs.shownav)
+      this.addevent(this.$refs.shownav)
     },
+    props:[
+      'click','text'
+    ],
     methods:{
-      ...mapActions([
-        'showMsg',
-      ]),
-      input(e){
-        e.target.style.height = e.target.scrollHeight + "px"
-      },
       send(){
-        console.log(this.txt)
-        if (!this.txt) {
-          this.showMsg('说点什么吧')
-        }
+        console.log('send')
       },
       addevent(e) {
         const fnmove = (d)=>{
@@ -75,13 +53,12 @@ import {mapActions} from 'vuex'
               this.move = false;
               return ;
             }     
-            this.send()
+            // this.send()
+            this.$props.click()
           })        
       }
     },
-    components:{
-      UploadPhotos,Drag
-    }
+
   }
 </script>
 
