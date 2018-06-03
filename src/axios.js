@@ -55,40 +55,49 @@ export default {
         return instance.post('/api/register', data);
     },
     //用户登录
-    userLogin(data){
+    userLogin(data) {
         return instance.post('/api/login', data); 
     },
     //获取用户
-    getUser(){
+    getUser() {
         return instance.get('/api/user');
     },
     //删除用户
-    delUser(data){
+    delUser(data) {
         return instance.post('/api/delUser', data);
     },
     //更新用户信息
-    UpdateUser(data){
+    UpdateUser(data) {
         return instance.post('/api/update', data);
     },
-    Infos(){
+    Infos() {
         return instance.get('/music/infos');
     },
-    DetailMusic(data){
-        return instance.post('/music/detail',data);
+    DetailMusic(data) {
+        return instance.post('/music/detail', data);
     },
     //添加音乐
-    CreateMusic(data){
+    CreateMusic(data) {
         return instance.post('/music/create', data);
     },
     //得到音乐列表
-    GetMusic(data){
+    GetMusic(data) {
         return instance.post('/music/list', data);
     },
     //添加音乐评论
-    AddMusicComment(data){
+    AddMusicComment(data) {
         return instance.post('/music/comment', data);
     },
-    Uploadfile(data){
+    CreateArticle(data) {
+        return instance.post('/article/create', data)
+    },
+    GetArticle(data) {
+        return instance.post('/article/list', data)
+    },
+    AddArticleComment(data) {
+        return instance.post('/article/comment', data)
+    },
+    Uploadfile(data) {
         return instance.post('/upload/jpg', data);        
     },
 

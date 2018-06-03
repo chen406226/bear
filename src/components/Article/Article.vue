@@ -8,7 +8,7 @@
   infinite-scroll-distance="10">
   <li v-for="item in list">{{item}}</li>
 </ul> -->
-  <!-- <mt-loadmore  :bottom-method="loadMore" :bottom-all-loaded="allLoaded" ref="loadmore">
+  <mt-loadmore  :bottom-method="loadMore" :bottom-all-loaded="allLoaded" ref="loadmore">
     <ul ref="scrolls">
       <li v-for="item in list">
         <div class="cont">
@@ -17,7 +17,7 @@
         <p>ni</p>
         {{ item }}</li>
     </ul>
-  </mt-loadmore> -->
+  </mt-loadmore>
     <div style="border:1px solid red;marginTop:0.5rem;width:3rem;height:3rem;" ref='cutu'>
       <img style="display:block;border:1px solid red" src="static/img/girl.png" /></div>
   </div>
@@ -97,5 +97,6 @@ export default {
 <style scoped lang="less">
 .indexd{
   padding-top: 0.5rem;
+  font-size: 14px;
 }
 </style>

@@ -73,7 +73,8 @@ const articleSchema = mongoose.Schema({
     comment:[{
         username:String,
         text:String
-    }]
+    }],
+    create_time:Date
 })
 
 // db.product.find({"parameSet":{"$elemMatch":{"564c408fe4b005ef3b0c1a69":"KFFF"}}})

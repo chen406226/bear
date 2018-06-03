@@ -77,10 +77,10 @@
             })
         }
       },
+      cancel() {
+        this.$router.push({path:'/my/amend',query:{url:this.avatar,username:this.username}})
+      }
     },
-    cancel() {
-      this.$router.push({path:'/my/amend',query:{url:this.avatar,username:this.username}})
-    }
   }
 </script>
 
