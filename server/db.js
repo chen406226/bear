@@ -21,10 +21,15 @@ const userSchema = mongoose.Schema({
     signature:String,  //个性签名
     token: String,  
     create_time: Date,
-    msg:[{
-        from:String,
-        readed:false
-    }]
+    mymusic:[{
+        title:String,
+        create_time:Date,
+        id:String        
+    }],
+    myarticle:[{
+        title:String,
+        create_time:Date,
+    }],
 });
 //创建系统数据
 const systemSchema = mongoose.Schema({
@@ -49,30 +54,29 @@ const musicSchema = mongoose.Schema({
     },
     comment:[{
         username:String,
-        text:String
+        text:String,
+        create_time: Date,        
     }],
     create_time:Date
 })
 //创建聊天
 const chartSchema = mongoose.Schema({
-    id:Number,
-    user1: String,
-    user2:String,
     comment:[{
-        fromuser:String,
+        from:String,
+        to:String,
         text:String,
         create_time:Date
     }]
 })
 //创建文章schema
 const articleSchema = mongoose.Schema({
-    id:Number,
     create_user: String,
     createtext:String,
-    url:[String],
+    url:String,
     comment:[{
         username:String,
-        text:String
+        text:String,
+        create_time: Date,
     }],
     create_time:Date
 })
@@ -94,6 +98,7 @@ const model = {
     User: mongoose.model('User', userSchema),
     Music:mongoose.model('Music',musicSchema),
     System:mongoose.model('System',systemSchema),
+    Article:mongoose.model('System',articleSchema),
 };
 
 module.exports = model;

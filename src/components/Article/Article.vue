@@ -25,6 +25,7 @@
 
 <script>
 import Head from '../../common/Head.vue'
+import api from '../../axios.js'
 
 export default {
   data(){
@@ -86,8 +87,13 @@ export default {
         }
       }
     },
-    getlist() {
-
+    async getlist() {
+      this.allLoaded = true;      
+      const res = await api.GetArticle(params)
+      this.list=this.list.concat(res.result)
+      this.$refs.loadmore.onBottomLoaded();
+      this.allLoaded = false;            
+      console.log(res)
     }
   }
 }

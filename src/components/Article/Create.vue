@@ -18,6 +18,7 @@
 import UploadPhotos from '../../common/UploadPhotos.vue'
 import Drag from '../../common/Drag.vue'
 import {mapActions} from 'vuex'
+import api from '../../axios.js'
 
   export default {
     data() {
@@ -46,11 +47,19 @@ import {mapActions} from 'vuex'
       input(e){
         e.target.style.height = e.target.scrollHeight + "px"
       },
-      send(){
-        console.log(this.txt)
+      async send(){
         if (!this.txt) {
-          this.showMsg('说点什么吧')
+          this.showMsg('说点什么吧');
+          return ;
         }
+        const params = {
+          create_user:'172221516',
+          createtext:this.txt,
+          url:this.list.imgurl
+        }
+
+        const res = await api.CreateArticle(params);
+        this.showMsg(res.mes)
       },
       addevent(e) {
         const fnmove = (d)=>{

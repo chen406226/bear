@@ -55,7 +55,28 @@ const delUser = function(id){
         });
     });
 };
-
+//添加相关音乐
+const addMusic = function(username,title,create_time,id){
+    return new Promise(( resolve, reject) => {
+        User.update({ username },{'$push':{mymusic:{title,create_time,id}}},(err,data)=>{
+            if (err) {
+                reject(err);
+            }
+            resolve();
+        })
+    });
+};
+//添加文章
+const addArticle = function(username,title,create_time){
+    return new Promise(( resolve, reject) => {
+        User.update({ username },{'$push':{myarticle:{title,create_time}}},(err,data)=>{
+            if (err) {
+                reject(err);
+            }
+            resolve();
+        })
+    });
+};
 //登录
 const Login = async ( ctx ) => {
     //拿到账号和密码
@@ -106,6 +127,8 @@ const Login = async ( ctx ) => {
 const Reg = async ( ctx ) => {
     let user = new User({
         username: ctx.request.body.username,
+        mymusic:[],
+        myarticle:[],
         password: sha1(ctx.request.body.password), //加密
         token: createToken(this.username) //创建token并存入数据库
     });
@@ -187,4 +210,6 @@ module.exports = {
     DelUser,
     Infos,
     Update,
+    addMusic,
+    addArticle
 };

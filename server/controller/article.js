@@ -1,6 +1,7 @@
-const Music = require('../db.js').Music;
+const Article = require('../db.js').Article;
+const user = require('./user.js')
+
 //下面这两个包用来生成时间
-const user = require('./user.js');
 const moment = require('moment');
 const objectIdToTimestamp = require('objectid-to-timestamp');
 //用于密码加密
@@ -10,9 +11,9 @@ const createToken = require('../token/createToken.js');
 
 //数据库的操作
 //根据用户名查找用户
-const findMusic = (id) => {
+const findArticle = (_id) => {
     return new Promise((resolve, reject) => {
-        Music.findOne({ id }, (err, doc) => {
+        Article.findOne({ _id }, (err, doc) => {
             if(err){
                 reject(err);
             }
@@ -21,9 +22,9 @@ const findMusic = (id) => {
     });
 };
 //按需查找
-const findlimitMusic = (page,pageSize) => {
+const findlimitArticle = (page,pageSize) => {
     return new Promise((resolve, reject) => {
-        Music.find({}).sort({_id:-1}).skip((page-1)*pageSize).limit(pageSize).exec((err, doc) => {
+        Article.find({}).sort({_id:-1}).skip((page-1)*pageSize).limit(pageSize).exec((err, doc) => {
             if(err){
                 reject(err);
             }
@@ -32,9 +33,9 @@ const findlimitMusic = (page,pageSize) => {
     });
 };
 //找到所有音乐
-const findAllMusic = () => {
+const findAllArticle = () => {
     return new Promise((resolve, reject) => {
-        Music.find({}, (err, doc) => {
+        Article.find({}, (err, doc) => {
             if(err){
                 reject(err);
             }
@@ -43,9 +44,9 @@ const findAllMusic = () => {
     });
 };
 //删除某个音乐
-const delMusic = function(id){
+const delArticle = function(id){
     return new Promise(( resolve, reject) => {
-        Music.findOneAndRemove({ id }, err => {
+        Article.findOneAndRemove({ id }, err => {
             if(err){
                 reject(err);
             }
@@ -55,9 +56,9 @@ const delMusic = function(id){
     });
 };
 //
-const addComment = function(id,username,text,create_time){
+const addComment = function(_id,username,text,create_time){
     return new Promise(( resolve, reject) => {
-        Music.update({ id },{'$push':{comment:{username,text,create_time}}},(err,data)=>{
+        Article.update({ _id },{'$push':{comment:{username,text,create_time}}},(err,data)=>{
             if (err) {
                 reject(err);
             }
@@ -68,7 +69,7 @@ const addComment = function(id,username,text,create_time){
 //
 const delComment = function(id,username,text){
     return new Promise(( resolve, reject) => {
-        Music.update({ id },{'$pull':{comment:{_id:123}}},(err,data)=>{
+        Article.update({ id },{'$pull':{comment:{_id:123}}},(err,data)=>{
             if (err) {
                 reject(err);
             }
@@ -89,7 +90,7 @@ const delComment = function(id,username,text){
 //             mes: '已创建请去评论'
 //         }
 //     }else {
-//         let music = new Music({
+//         let music = new Article({
 //             id,
 //             comment : [],
 //             songinfo : ctx.request.body.songinfo,
@@ -122,39 +123,30 @@ const delComment = function(id,username,text){
 // };
 //注册
 const Create = async ( ctx ) => {
-    let music = new Music({
-        id : ctx.request.body.id,
+    let article = new Article({
         comment : [],
-        songinfo : ctx.request.body.songinfo,
+        url : ctx.request.body.url,
         createtext : ctx.request.body.createtext,
         create_user : ctx.request.body.create_user,
     });
-    music.create_time = moment(objectIdToTimestamp(music._id)).format('YYYY-MM-DD HH:mm');
-    let doc = await findMusic(music.id);
-    if(doc){ 
-        console.log('歌曲已经存在');
-        ctx.status = 200;
-        ctx.body = {
-            success: false,
-            mes:'歌曲已存在请去评论区'
-        };
-    }else{
-        await new Promise((resolve, reject) => {
-            music.save((err) => {
-                if(err){
-                    reject(err);
-                }
-                resolve();
-                user.addMusic(music.create_user,music.songinfo.name,music.create_time,music.id)                
-            });
+    article.create_time = moment(objectIdToTimestamp(article._id)).format('YYYY-MM-DD HH:mm');
+   
+    await new Promise((resolve, reject) => {
+        article.save((err) => {
+            if(err){
+                reject(err);
+            }
+            resolve();
+            user.addArticle(article.create_user,article.createtext,article.create_time,article._id)
         });
-        console.log('创建成功');
-        ctx.status = 200;
-        ctx.body = {
-            success: true,
-            mes:'创建成功'
-        }
+    });
+    console.log('创建成功');
+    ctx.status = 200;
+    ctx.body = {
+        success: true,
+        mes:'创建成功'
     }
+    
 };
 //获得所有用户信息
 const GetAllUsers = async( ctx ) => {
@@ -196,8 +188,8 @@ const Comment = async( ctx ) => {
     let id = ctx.request.body.id;
     let username = ctx.request.body.username;
     let text = ctx.request.body.text;
-    let create_time = moment(new Date()).format('YYYY-MM-DD HH:mm')    
-    await addComment(id,username,text)
+    let create_time = moment(new Date()).format('YYYY-MM-DD HH:mm')
+    await addComment(id,username,text,create_time)
     ctx.status = 200;
     ctx.body = {
         mes: '评论成功'
@@ -225,8 +217,8 @@ const Infos = async( ctx ) => {
 };
 const Detail = async( ctx ) => {
     //拿到要查找的音乐id
-    let id = ctx.request.body.id;
-    let doc = await findMusic(id);
+    let _id = ctx.request.body._id;
+    let doc = await findArticle(_id);
     if(doc){ 
         ctx.status = 200;
         ctx.body = {
