@@ -94,6 +94,9 @@ export default {
     GetArticle(data) {
         return instance.post('/article/list', data)
     },
+    DetailArticle(data) {
+        return instance.post('/article/detail', data);
+    },
     AddArticleComment(data) {
         return instance.post('/article/comment', data)
     },

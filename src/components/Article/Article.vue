@@ -10,7 +10,7 @@
 </ul> -->
   <mt-loadmore  :bottom-method="loadMore" :bottom-all-loaded="allLoaded" ref="loadmore">
     <ul ref="scrolls">
-      <li v-for="item in list">
+      <li v-for="item in list" @click="jump(item._id)">
         <div class="cont">
 
         </div>
@@ -94,7 +94,10 @@ export default {
       this.$refs.loadmore.onBottomLoaded();
       this.allLoaded = false;            
       console.log(res)
-    }
+    },
+    jump(_id){
+      this.$router.push({path:'/article/detail',query:{_id}})
+    },
   }
 }
 </script>

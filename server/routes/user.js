@@ -1,6 +1,6 @@
 const UserController = require('../controller/user.js');
 const SystemController = require('../controller/system.js');
-// const MusicController = require('../controller/music.js');
+const ChartController = require('../controller/charts.js');
 const Router = require('koa-router');
 
 const childRouter = new Router();
@@ -16,6 +16,7 @@ childRouter.post('/update', UserController.Update);
 //需要先检查权限的路由
 childRouter.get('/user', checkToken, UserController.GetAllUsers);
 childRouter.post('/delUser', checkToken, UserController.DelUser);
+childRouter.post('/charts', checkToken, ChartController.AddChart);
 
 //系统默认的
 childRouter.get('/count', SystemController.Getcount);

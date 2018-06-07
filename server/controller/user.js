@@ -77,7 +77,18 @@ const addArticle = function(username,title,create_time){
         })
     });
 };
-//登录
+//添加聊天 (from,chart._id,to)
+const addChart = function(username,_id,withp){
+    return new Promise(( resolve, reject) => {
+        User.update({ username },{'$push':{charts:{_id,withp}}},(err,data)=>{
+            if (err) {
+                reject(err);
+            }
+            resolve();
+        })
+    });
+};
+
 const Login = async ( ctx ) => {
     //拿到账号和密码
     let username = ctx.request.body.username;
@@ -211,5 +222,6 @@ module.exports = {
     Infos,
     Update,
     addMusic,
-    addArticle
+    addArticle,
+    addChart
 };

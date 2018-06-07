@@ -85,6 +85,6 @@
     color: rgb(201, 175, 140);
     top:200px;
     left: 50px;
-    z-index: 9999999999999999;
+    z-index:999999998;
   }
 </style>

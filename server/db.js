@@ -30,6 +30,10 @@ const userSchema = mongoose.Schema({
         title:String,
         create_time:Date,
     }],
+    charts:[{
+        withp:String,
+        _id:Number
+    }]
 });
 //创建系统数据
 const systemSchema = mongoose.Schema({

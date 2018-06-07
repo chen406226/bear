@@ -1,4 +1,4 @@
-const MusicController = require('../controller/article.js');
+const ArticleController = require('../controller/article.js');
 const Router = require('koa-router');
 
 const childRouter = new Router();
@@ -7,15 +7,15 @@ const childRouter = new Router();
 const checkToken = require('../token/checkToken.js');
 
 // childRouter.post('/musicinfo', MusicController.Info);
-childRouter.get('/infos', MusicController.Infos);
+childRouter.get('/infos', ArticleController.Infos);
 //添加
-childRouter.post('/create', MusicController.Create);
+childRouter.post('/create', ArticleController.Create);
 //查找详情
-childRouter.post('/detail', MusicController.Detail);
+childRouter.post('/detail', ArticleController.Detail);
 //评论
-childRouter.post('/comment', MusicController.Comment);
+childRouter.post('/comment', ArticleController.Comment);
 //获得列表
-childRouter.post('/list', MusicController.GetlimitArticle);
+childRouter.post('/list', ArticleController.GetlimitArticle);
 //删除评论
 // childRouter.post('/delcomment', MusicController.DelComment);
 
