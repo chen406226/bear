@@ -15,7 +15,7 @@ childRouter.post('/detail', ArticleController.Detail);
 //评论
 childRouter.post('/comment', ArticleController.Comment);
 //获得列表
-childRouter.post('/list', ArticleController.GetlimitArticle);
+// childRouter.post('/list', ArticleController.GetlimitArticle);
 //删除评论
 // childRouter.post('/delcomment', MusicController.DelComment);
 

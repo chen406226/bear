@@ -36,7 +36,7 @@ const userSchema = mongoose.Schema({
     }]
 });
 //创建系统数据
-const systemSchema = mongoose.Schema({
+const systSchema = mongoose.Schema({
     id:Number,
     count: Number,
     regcount: Number,
@@ -101,7 +101,7 @@ const shareSchema = mongoose.Schema({
 const model = {
     User: mongoose.model('User', userSchema),
     Music:mongoose.model('Music',musicSchema),
-    System:mongoose.model('System',systemSchema),
+    Syst:mongoose.model('Syst',systSchema),
     Article:mongoose.model('System',articleSchema),
 };
 

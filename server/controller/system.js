@@ -1,4 +1,4 @@
-const System = require('../db.js').System;
+const System = require('../db.js').Syst;
 //下面这两个包用来生成时间
 const moment = require('moment');
 const objectIdToTimestamp = require('objectid-to-timestamp');
