@@ -1,5 +1,7 @@
 const User = require('../db.js').User;
 const system = require('./system.js')
+const fs = require('fs');
+const path=require("path")
 //下面这两个包用来生成时间
 const moment = require('moment');
 const objectIdToTimestamp = require('objectid-to-timestamp');
@@ -197,9 +199,14 @@ const Update = async( ctx ) => {
     //拿到要删除的用户id
     let username = ctx.request.body.username;
     let key = ctx.request.body.key;
-    let value = ctx.request.body.value;
-    
-    await updateUser(username,key,value);
+    let value = ctx.request.body.value.match(/base64,(.+)/)[1];
+    const url = username+'.jpg'
+    const dirpath=path.resolve(__dirname,"../../static/avatar/"+url);
+    if (key == 'avatar') {
+        let bitmap = new Buffer(value,'base64')
+        fs.writeFileSync(dirpath,bitmap)
+    }
+    await updateUser(username,key,url);
     ctx.status = 200;
     ctx.body = {
         success: '更新成功'

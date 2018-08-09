@@ -17,11 +17,11 @@
         :fixedNumber="example2.fixedNumber"
       ></vueCropper>
     </div>
-    <label class="btn" for="upload2">upload</label>
+    <label class="btn" for="upload2">选择图片</label>
     <input type="file" id="upload2" style="position:absolute; clip:rect(0 0 0 0);" accept="image/png, image/jpeg, image/gif, image/jpg" @change="uploadImg($event, 2)">
-    <button @click="finish2('base64')" class="btn">preview(base64)</button>
+    <button :style="{}" @click="finish2('base64')" class="btn">确认上传</button>
     </div>
-    <p>{{d}}}</p>
+    <p>{{d}}</p>
   </div>
 </template>
 
@@ -104,5 +104,17 @@ console.log(VueCropper)
 </script>
 
 <style scoped>
-
+  .btn {
+    background: white;
+    border-radius: 3px;
+    border: 0.01rem solid #243;
+    padding: .02rem .03rem;
+    box-shadow: 0px 4px rgba(86, 226, 31, 0.2);
+    color: #888;
+    text-align: center;
+    user-select: none;
+    line-height: .45rem;
+    height: .45rem;
+    font-size: .3rem;
+  }
 </style>
