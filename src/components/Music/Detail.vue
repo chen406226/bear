@@ -47,14 +47,15 @@
         </ul>
       </div>
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
       <div class="canel" @click="cancel">
         返回
       </div>
       <div class="ok" @click="ok">
         my store
       </div>
-    </div>
+    </div> -->
+    <Drag v-if="!popupVisible" :click="ok" text='写评论'></Drag>
     <!-- <mt-popup
       v-model="popupVisible"
       position="right"
@@ -70,7 +71,7 @@
         <textarea @input="input" ref='textarea' placeholder="说点什么吧！" autosize v-model="txt"></textarea>
 
       </div>
-      <div class="footer">
+      <div class="footerd">
         <div class="canel" @click="close">
           取消
         </div>
@@ -86,6 +87,7 @@
 import api from '../../axios.js'
 import {getParam} from '../../handle/fun.js'
 import {mapGetters, mapActions} from 'vuex'
+import Drag from '../../common/Drag'
 import moment from 'moment'
 import { Indicator } from 'mint-ui';
   export default {
@@ -164,7 +166,7 @@ import { Indicator } from 'mint-ui';
         this.popupVisible = false
         const par={
           id:this.id,
-          username:'451969599',
+          username:sessionStorage.getItem('username'),
           text:this.txt
         }
         const res = api.AddMusicComment(par)
@@ -176,6 +178,9 @@ import { Indicator } from 'mint-ui';
       reverse(){
         return this.data.comment.reverse()
       }
+    },
+    components:{
+      Drag
     }
   }
 </script>
@@ -243,7 +248,7 @@ import { Indicator } from 'mint-ui';
         }
       }
     }
-  .footer{
+  .footerd{
     position: fixed;
     bottom: 0;
     left: 0;

@@ -5,9 +5,10 @@
       <img src="static/img/persons.png">
       <a name="ppp"></a>
     </div>
-    <p id='sd'>hello world</p>
+    <a href="#/music">请去音乐专区</a>
+    <!-- <p id='sd'>hello world</p> -->
     <!-- <p>{{path}}</p> -->
-    <router-link to="/biography/detail">你好</router-link>
+    <!-- <router-link to="/biography/detail">你好</router-link>
     <div>
       <p>65454</p>
       <p>65454</p>
@@ -41,7 +42,7 @@
       <p>65454</p>
       <p>65454</p>
       <p>65454</p>
-    </div>
+    </div> -->
 
   </div>
 </template>

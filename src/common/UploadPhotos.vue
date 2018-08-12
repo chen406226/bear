@@ -12,7 +12,9 @@
                        accept="image/png,image/jpg" class="file"/>
             <!-- </form> -->
         </div>
-        <div class="imageContent" v-show="showPhoto" ref="less"></div>
+        <div class="imageContent" v-show="showPhoto" ref="less">
+            <img v-if="imageUrl" :src="imageUrl" alt="">
+        </div>
     </div>
 </template>
 <script>
@@ -61,9 +63,9 @@ import {mapGetters, mapActions} from 'vuex'
                 if (res.success) {
                     this.showPhoto = true;
                     this.$props.data.showimg = true;
-                    this.imageUrl = "static/img/" + res.filename;
+                    this.imageUrl = "static/uploads/" + res.filename;
                     // this.$props.data.imgurl = "static/img/" + res.filename;
-                    this.addstyle();
+                    // this.addstyle();
                 }
                 this.$message({
                     tyep:'success',
@@ -152,7 +154,9 @@ import {mapGetters, mapActions} from 'vuex'
     .imageContent {
         width: 100%;
         height: 100%;
-
+        img {
+            max-height: 300px;
+        }
     }
 
 </style>

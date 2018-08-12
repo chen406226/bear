@@ -5,7 +5,6 @@
     <transition name="bar">
       <Dir v-if="dir()"  ></Dir>
     </transition> 
-    <p v-if="dir()">你好</p>
   </div>
 </template>
 

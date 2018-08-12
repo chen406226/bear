@@ -83,8 +83,8 @@
     font-size: 10px;
     line-height: 8px;
     color: rgb(201, 175, 140);
-    top:200px;
-    left: 50px;
-    z-index:999999998;
+    top:450px;
+    left: 300px;
+    z-index:99999998;
   }
 </style>

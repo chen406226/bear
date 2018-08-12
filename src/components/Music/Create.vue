@@ -30,20 +30,23 @@
       <div></div>
     </div>
     <!-- <audio autoplay :src="'http://music.163.com/song/media/outer/url?id='+447925066+'.mp3'"></audio> -->
-    <div class="footer">
+    <!-- <div class="footer">
       <div class="canel" @click="cancel">
         返回
       </div>
       <div class="ok" @click="ok">
         确定
       </div>
-    </div>
+    </div> -->
+    <Drag :click="ok" text='提交'></Drag>
+
   </div>
 </template>
 
 <script>
 import api from '../../axios.js'
 import axios from 'axios'
+import Drag from '../../common/Drag.vue'
 import {mapGetters, mapActions} from 'vuex'
 export default {
   data(){
@@ -57,6 +60,9 @@ export default {
       item:{},
       txt:'',
     }
+  },
+  components:{
+    Drag
   },
   created(){
     // api.getUser().then((response) => {
@@ -118,9 +124,12 @@ export default {
       window.history.back();
     },
     async ok(){
+      if (!this.item.id||!this.txt) {
+        return;
+      }
       const params = {
         id:this.item.id,
-        create_user:'172221516',
+        create_user:sessionStorage.getItem('username'),
         createtext:this.txt,
         songinfo:{
           name:this.item.name,

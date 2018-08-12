@@ -9,10 +9,10 @@
           <span class="mes">音乐</span>
           <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
         </div>
-        <div class="link" @click="haha('article')">
+        <!-- <div class="link" @click="haha('article')">
           <span class="mes">图文</span>
           <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
-        </div>
+        </div> -->
         <div class="link" @click="haha('biography')">
           <span class="mes">传记</span>
           <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
@@ -109,6 +109,11 @@
         padding-top: 50px;
         overflow-y: auto;
         box-sizing: border-box;
+        img{
+          position: relative;
+          top: .1rem;
+          left: 0;
+        }
         // padding-left: 10px;
         .link{
           height: 1rem;

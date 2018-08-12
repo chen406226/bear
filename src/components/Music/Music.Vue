@@ -13,14 +13,13 @@
           <span class="jump jump6">!</span>
         </p>
         <p class="">
-          <span class="jump jump1">了</span>
-          <span class="jump jump2">解</span>
+          <span class="jump jump1">写</span>
+          <span class="jump jump2">进</span>
           <span class="jump jump3">你</span>
           <span class="jump jump4">的</span>
-          <span class="jump jump5">孤独</span>
-          <span class="jump jump6">和</span>
-          <span class="jump jump7">寂寞</span>
-          <span class="jump jump8">!</span>
+          <span class="jump jump5">人</span>
+          <span class="jump jump6">生</span>
+          <span class="jump jump7">！</span>
         </p>
       </div>
     </div>
@@ -67,17 +66,18 @@
       </div>
     </div>
     <div class="header">
-    <a href="#/biography?id=sdf">dfsdf</a>
+    <!-- <a href="#/biography?id=sdf">dfsdf</a> -->
     <!-- <audio autoplay :src="'http://music.163.com/song/media/outer/url?id='+447925066+'.mp3'"></audio> -->
     </div>
-    <div class="fiexd">
+    <!-- <div class="fiexd">
       <div class="canel" @click="cancel">
         返回
       </div>
       <div class="ok" @click="ok">
         添加专题
       </div>
-    </div>
+    </div> -->
+    <Drag :click="ok" text='创建专题'></Drag>
   </div>
 </template>
 
@@ -85,6 +85,7 @@
 import api from '../../axios.js'
 import {jumpmaodian} from '../../handle/fun.js'
 import Head from '../../common/Head.vue'
+import Drag from '../../common/Drag.vue'
 
 import axios from 'axios'
 import moment from 'moment'
@@ -117,11 +118,15 @@ export default {
     //     this.users = response.data.result;
     //   }
     // });
+    console.log(this.$store)
   },
   components:{
-    Head
+    Head,Drag
   },
   methods: {
+    send(){
+      this.ok()
+    },
     async getmusic(){
       const res = await axios.get('http://musicapi.leanapp.cn/search?keywords=海阔天空')
       console.log(res)
