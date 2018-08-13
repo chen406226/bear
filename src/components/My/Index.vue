@@ -15,9 +15,9 @@
           <div class="oo">{{signature}}</div>
         </div>
       </div>
-      <div class="fot">
+      <!-- <div class="fot">
 
-      </div>
+      </div> -->
     </header>
     <section>
       <!-- <router-link tag='li' to="/music" class="link">
@@ -26,13 +26,13 @@
         <span class="count">+3</span>
         <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
       </router-link> -->
-      <router-link tag='li' to="/music" class="link">
+      <router-link tag='li' to="/my" class="link">
         <span class="mes">与我相关</span>
         <img src="static/img/comment.png" :style="{height:'0.4rem',width:'0.4rem'}">
         <span class="count">+3</span>
         <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
       </router-link>
-      <router-link tag='li' to="/music" class="link">
+      <router-link tag='li' to="/my/music" class="link">
         <span class="mes">我发起的音乐专题</span>
         <!-- <img src="static/img/comment.png" :style="{height:'0.4rem',width:'0.4rem'}"> -->
         <!-- <span class="count">+3</span> -->
@@ -58,6 +58,11 @@
         avatar:'dog2.png',
         username:sessionStorage.getItem('username'),
         signature:''
+      }
+    },
+    mounted(){
+      if (sessionStorage.getItem('avatar')) {
+        this.avatar = sessionStorage.getItem('avatar');
       }
     },
     methods:{

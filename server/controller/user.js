@@ -60,6 +60,7 @@ const delUser = function(id){
 //添加相关音乐
 const addMusic = function(username,title,create_time,id){
     return new Promise(( resolve, reject) => {
+        console.log('addmusi')
         User.update({ username },{'$push':{mymusic:{title,create_time,id}}},(err,data)=>{
             if (err) {
                 reject(err);
@@ -124,6 +125,7 @@ const Login = async ( ctx ) => {
         ctx.body = { 
             success: true,
             username,
+            avatar:doc.avatar,
             token, //登录成功要创建一个新的token,应该存入数据库
             create_time: doc.create_time
         };
@@ -140,6 +142,7 @@ const Login = async ( ctx ) => {
 const Reg = async ( ctx ) => {
     let user = new User({
         username: ctx.request.body.username,
+        avatar:'dog2.png',
         mymusic:[],
         myarticle:[],
         password: sha1(ctx.request.body.password), //加密
@@ -213,6 +216,18 @@ const Update = async( ctx ) => {
     };
 };
 
+const Mymusic = async( ctx ) => {
+    //拿到要删除的用户id
+    let username = ctx.request.body.username;
+    let doc = await findUser(username);
+    ctx.status = 200;
+    ctx.body = {
+        success: '更新成功',
+        result:doc.mymusic,
+    };
+};
+
+
 const Infos = ( ctx ) => {
     //拿到要删除的用户id
     ctx.status = 200;
@@ -230,5 +245,6 @@ module.exports = {
     Update,
     addMusic,
     addArticle,
-    addChart
+    addChart,
+    Mymusic
 };

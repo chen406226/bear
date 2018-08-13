@@ -36,8 +36,8 @@ console.log(VueCropper)
         d:'',
         username:this.$route.query.username,
         example2: {
-					img: 'http://ofyaji162.bkt.clouddn.com/bg1.jpg',
-					// img: this.$route.query.url,
+					// img: 'http://ofyaji162.bkt.clouddn.com/bg1.jpg',
+					img: '/static/avatar/'+this.$route.query.url,
 					info: true,
 					size: 1,
 					outputType: 'jpeg',
@@ -94,10 +94,17 @@ console.log(VueCropper)
       },
       async changeinfo(data){
         const res = await api.UpdateUser({
-          username:'172221516',
+          username:sessionStorage.getItem('username'),
           key:'avatar',
           value:data
         })
+        if (res.success) {
+          if (sessionStorage.getItem('avatar')=='dog2.png') {
+            sessionStorage.setItem('avatar',sessionStorage.getItem('username')+'.png')
+          }
+          
+          this.$router.push('/my')
+        }
       }
     }
   }

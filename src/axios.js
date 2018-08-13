@@ -62,6 +62,10 @@ export default {
     getUser() {
         return instance.get('/api/user');
     },
+    //获取用户
+    getMymusic(data) {
+        return instance.post('/api/mymusic',data);
+    },
     //删除用户
     delUser(data) {
         return instance.post('/api/delUser', data);

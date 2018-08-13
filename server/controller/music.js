@@ -145,9 +145,9 @@ const Create = async ( ctx ) => {
                     reject(err);
                 }
                 resolve();
-                user.addMusic(music.create_user,music.songinfo.name,music.create_time,music.id)                
             });
         });
+        await user.addMusic(music.create_user,music.songinfo.name,music.create_time,music.id)                
         console.log('创建成功');
         ctx.status = 200;
         ctx.body = {

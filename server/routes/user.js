@@ -16,6 +16,7 @@ childRouter.post('/update', UserController.Update);
 //需要先检查权限的路由
 childRouter.get('/user', checkToken, UserController.GetAllUsers);
 childRouter.post('/delUser', checkToken, UserController.DelUser);
+childRouter.post('/mymusic', checkToken, UserController.Mymusic);
 // childRouter.post('/charts', checkToken, ChartController.AddChart);
 
 //系统默认的

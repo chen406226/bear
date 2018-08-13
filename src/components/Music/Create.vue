@@ -140,6 +140,7 @@ export default {
 
       const res = await api.CreateMusic(params);
       this.showMsg(res.mes)
+      this.$router.push('/music')
     }
   },
  
@@ -158,7 +159,7 @@ export default {
     width: 7.5rem;
     text-align: left;
     .scroll{
-      height: 3rem;
+      height: 5rem;
       overflow-y: scroll;
       border-top: 1px dashed #ccc;
       border-bottom: 1px dashed #ccc;

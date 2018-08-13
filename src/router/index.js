@@ -71,6 +71,12 @@ const MyIndex = resolve => {
   });
 };
 
+const Mymusic = resolve => {
+  require.ensure(['../components/My/Mymusic/Index.vue'], () => {
+    resolve(require('../components/My/Mymusic/Index.vue'));
+  });
+};
+
 const Article = resolve => {
   require.ensure(['../components/Article/Article.vue'], () => {
     resolve(require('../components/Article/Article.vue'));
@@ -92,6 +98,8 @@ const Error404 = resolve => {
       resolve(require('../components/404.vue'));
   }); 
 };
+
+
 
 const router = new Router({
   mode: 'hash',
@@ -166,6 +174,9 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },{
+      path: '/my/music',
+      component: Mymusic,
     }
   ]
 });
