@@ -5,7 +5,7 @@
       <div class="header">
         <div class="infot">
           <div class="avatar">
-            <img v-if="avatar" @click="cancel" :src="'static/img/'+avatar" :style="{borderRadius:'50%'}" />
+            <img v-if="avatar" @click="cancel" :src="'static/avatar/'+avatar" :style="{borderRadius:'50%'}" />
             <img v-else src="static/img/default.jpg" :style="{borderRadius:'50%'}" />
           </div>
         </div>
@@ -20,12 +20,12 @@
       </div>
     </header>
     <section>
-      <router-link tag='li' to="/music" class="link">
+      <!-- <router-link tag='li' to="/music" class="link">
         <span class="mes">消息</span>
         <img src="static/img/comment.png" :style="{height:'0.4rem',width:'0.4rem'}">
         <span class="count">+3</span>
         <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
-      </router-link>
+      </router-link> -->
       <router-link tag='li' to="/music" class="link">
         <span class="mes">与我相关</span>
         <img src="static/img/comment.png" :style="{height:'0.4rem',width:'0.4rem'}">
@@ -34,16 +34,16 @@
       </router-link>
       <router-link tag='li' to="/music" class="link">
         <span class="mes">我发起的音乐专题</span>
-        <img src="static/img/comment.png" :style="{height:'0.4rem',width:'0.4rem'}">
-        <span class="count">+3</span>
-        <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
+        <!-- <img src="static/img/comment.png" :style="{height:'0.4rem',width:'0.4rem'}"> -->
+        <!-- <span class="count">+3</span> -->
+        <img src="static/img/arrow.png" alt="" :style="{marginLeft:'2.4rem',height:'0.4rem',width:'0.4rem'}">
       </router-link>
-      <router-link tag='li' to="/music" class="link">
+      <!-- <router-link tag='li' to="/music" class="link">
         <span class="mes">我发起的图文专题</span>
         <img src="static/img/comment.png" :style="{height:'0.4rem',width:'0.4rem'}">
         <span class="count">+3</span>
         <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
-      </router-link>
+      </router-link> -->
     </section>
     <div class="logout">
       <mt-button type="danger" @click="logout">退出登录</mt-button>
@@ -55,8 +55,8 @@
   export default {
     data(){
       return {
-        avatar:'aa3.jpg',
-        username:'saka',
+        avatar:'dog2.png',
+        username:sessionStorage.getItem('username'),
         signature:''
       }
     },

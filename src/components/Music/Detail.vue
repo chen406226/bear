@@ -149,6 +149,13 @@ import { Indicator } from 'mint-ui';
         window.history.back();
       },
       ok(){
+        console.log(window.location)
+        var hs = window.location.hash
+        hs = hs.slice(1);
+        if (!sessionStorage.getItem('username')) {
+          this.$router.push({path:'/login?redirect='+hs})
+          return ;
+        }
         this.popupVisible = true
       },
       input(e){

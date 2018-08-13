@@ -134,6 +134,9 @@ const router = new Router({
     },{
       path: '/music/create',
       component: CreateMusic,
+      meta: {
+        requiresAuth: true
+      }
     },{
       path: '/music/detail',
       name: 'detail',
@@ -160,7 +163,9 @@ const router = new Router({
     },{
       path: '/my',
       component: MyIndex,
-    
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 });
