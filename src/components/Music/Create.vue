@@ -14,7 +14,7 @@
             <p :style="{color:'#aaa'}">{{item.album.name}}</p>
           </div>
           <div class="handle">
-            <p v-if="playing&&songid==item.id" class="iconfont icon-pause-20" @click="pausesong" ></p>
+            <p v-if="playing()&&musicid()==item.id" class="iconfont icon-pause-20" @click="pausesong" ></p>
             <p v-else class="iconfont icon-bofang" @click="playsong(item.id)" ></p>
             <p v-if="selectsong&&songid==item.id" class="selectbtn" @click="delselect">已选</p>
             <p v-else class="selectbtn" @click="select(item)">选择</p>
@@ -22,7 +22,7 @@
         </li>
       </ul>
       <div >
-        <audio ref="audio" @ended="playend" :src="'http://music.163.com/song/media/outer/url?id='+songid+'.mp3'"></audio>
+        <!-- <audio ref="audio" @ended="playend" :src="'http://music.163.com/song/media/outer/url?id='+songid+'.mp3'"></audio> -->
       </div>
     </div>
     <div class="txt" v-if="selectsong">
@@ -56,7 +56,7 @@ export default {
       songname:'',
       selectsong:false,
       songid:null,
-      playing:false,
+      // playing:false,
       item:{},
       txt:'',
     }
@@ -76,6 +76,9 @@ export default {
     // });
   }, 
   methods: {
+    ...mapGetters([
+        'musicid','playing'
+      ]),
     ...mapActions([
         'showMsg',
     ]),
@@ -97,21 +100,25 @@ export default {
     },
     playsong(id){
       this.songid = id;
+      this.$store.dispatch('MusicId',id)
       setTimeout(()=>{
-        this.playing = true;
-        this.$refs.audio.play()
+        // this.playing = true;
+        this.$store.commit("PLAY",true)
+        this.$store.state.ele.play()
+        // this.$refs.audio.play()
       },10)
     },
     pausesong(){
-      this.playing = false;
-      this.$refs.audio.pause()
+      // this.playing = false;
+      this.$store.commit("PLAY",false)
+      this.$store.state.ele.pause()
     },
     select(item){
       this.selectsong = true;
       this.item = item;
     },
     playend(){
-      this.playing = false;
+      // this.playing = false;
     },
     delselect(){
       this.selectsong = false;

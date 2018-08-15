@@ -6,7 +6,7 @@
     <p>故事或许不够美好，好在酒水管饱。我知道，每个人的世界都有不同，但这些故事里的世界，一定是你似曾相识又触摸不到的另一面，它就像夜里的酒，早上的花儿，平淡又真实，美好又残酷。</p>
     <p class="tc pt">愿我们的故事绿水长流~</p>
     <p class="tc">敬你的孤独择日而终!</p>
-    <p style="text-indent:0; padding-left:.4rem;margin-top:1rem;"><span>已浏览</span><span style="color:pink;"> {{count}} </span><br/><span>已注册</span><span style="color:yellow;"> {{regcount}} </span></p>
+    <p style="text-indent:0; padding-left:.4rem;margin-top:1rem;"><span>已浏览</span><span style="color:pink;"> {{count}} </span><br/><span>已注册</span><span style="color:#b20dcb;"> {{regcount}} </span></p>
     <!-- <mt-cell to="/hello" is-link>酒已酿好，等你来听</mt-cell> -->
     <!-- <p @click="sdff">你好</p> -->
     <!-- <form action="http://localhost:8888/upload/jpg" method="post" enctype="multipart/form-data">  

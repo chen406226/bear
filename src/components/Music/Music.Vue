@@ -5,27 +5,28 @@
       <img src="static/img/musicbg.jpg">
       <div class="txtjump">
         <p class="">
-          <span class="jump jump1">总</span>
-          <span class="jump jump2">有</span>
-          <span class="jump jump3">一</span>
-          <span class="jump jump4">首</span>
-          <span class="jump jump5">歌</span>
-          <span class="jump jump6">!</span>
+          <span class="jump jump1">每</span>
+          <span class="jump jump2">首</span>
+          <span class="jump jump3">歌</span>
+          <span class="jump jump4">都</span>
+          <span class="jump jump5">有</span>
+          <span class="jump jump6">灵</span>
+          <span class="jump jump7">魂</span>
         </p>
         <p class="">
-          <span class="jump jump1">写</span>
-          <span class="jump jump2">进</span>
-          <span class="jump jump3">你</span>
-          <span class="jump jump4">的</span>
-          <span class="jump jump5">人</span>
-          <span class="jump jump6">生</span>
+          <span class="jump jump1">和</span>
+          <span class="jump jump2">无</span>
+          <span class="jump jump3">数</span>
+          <span class="jump jump4">个</span>
+          <span class="jump jump5">故</span>
+          <span class="jump jump6">事</span>
           <span class="jump jump7">！</span>
         </p>
       </div>
     </div>
     <div class="content">
       <div >
-        <audio ref="audio" @ended="playend" :src="'http://music.163.com/song/media/outer/url?id='+songid+'.mp3'"></audio>
+        <!-- <audio ref="audio" @ended="playend" :src="'http://music.163.com/song/media/outer/url?id='+songid+'.mp3'"></audio> -->
       </div>
       <mt-loadmore  :bottom-method="loadMore" :bottom-all-loaded="allLoaded" ref="loadmore">
         <ul ref="scrolls">
@@ -36,7 +37,7 @@
                 <p :style="{color:'#aaa'}">{{item.songinfo.slbumname}}</p>
               </div>
               <div class="handle">
-                <p v-if="playing&&songid==item.id" class="iconfont icon-pause-20" @click.stop="pausesong" ></p>
+                <p v-if="playing()&&musicid()==item.id" class="iconfont icon-pause-20" @click.stop="pausesong" ></p>
                 <p v-else class="iconfont icon-bofang" @click.stop="playsong(item.id)" ></p>
               </div>
             </div>
@@ -86,7 +87,7 @@ import api from '../../axios.js'
 import {jumpmaodian} from '../../handle/fun.js'
 import Head from '../../common/Head.vue'
 import Drag from '../../common/Drag.vue'
-
+import {mapGetters} from 'vuex'
 import axios from 'axios'
 import moment from 'moment'
 export default {
@@ -101,7 +102,7 @@ export default {
       list:[1,2,3],
       loading:false,
       allLoaded:false,
-      playing : false,
+      // playing : false,
     }
   },
   created(){
@@ -124,6 +125,9 @@ export default {
     Head,Drag
   },
   methods: {
+    ...mapGetters([
+      'musicid','playing'
+    ]),
     send(){
       this.ok()
     },
@@ -163,17 +167,21 @@ export default {
     },
     playsong(id){
       this.songid = id;
+      this.$store.dispatch('MusicId',id)
+      this.$store.commit('PLAY',true)
       setTimeout(()=>{
-        this.playing = true;
-        this.$refs.audio.play()
+        // this.playing = true;
+        this.$store.state.ele.play()
+        // this.$refs.audio.play()
       },10)
     },
     pausesong(){
-      this.playing = false;
-      this.$refs.audio.pause()
+      // this.playing = false;
+      this.$store.commit('PLAY',false)
+      this.$store.state.ele.pause()
     },
     playend(){
-      this.playing = false;
+      // this.playing = false;
     },
     time(d){
       return moment(d).format('YYYY-MM-DD hh:mm')
@@ -208,10 +216,10 @@ export default {
       top: 0;
       left: 0;
       width: 7.5rem;
-      padding: 0.8rem 1rem 0.4rem ;
+      padding: 1.2rem 1rem 0.4rem ;
       font-size: 24px;
       p{
-        height: 1rem;
+        height: .8rem;
         text-align: center;
       }
     }

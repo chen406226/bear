@@ -15,13 +15,13 @@
     </div>
     <div v-if="data" :style="{textAlign:'left'}">
       <div class="cont">
-        <audio ref="audio" @ended="playend" :src="'http://music.163.com/song/media/outer/url?id='+data.id+'.mp3'"></audio>
+        <!-- <audio ref="audio" @ended="playend" :src="'http://music.163.com/song/media/outer/url?id='+data.id+'.mp3'"></audio> -->
         <div class="info">
           <p :style="{color:'#0c73c2'}">{{data.songinfo.artistname}} : <span :style='{color:"#ea2000",fontSize:"14px",marginLeft:"15px"}'>{{data.songinfo.name}}</span></p>
           <p :style="{color:'#aaa'}">{{data.songinfo.slbumname}}</p>
         </div>
         <div class="handle">
-          <p v-if="playing" class="iconfont icon-pause-20" @click.stop="pausesong" ></p>
+          <p v-if="playing()&&musicid()==data.id" class="iconfont icon-pause-20" @click.stop="pausesong" ></p>
           <p v-else class="iconfont icon-bofang" @click.stop="playsong" ></p>
         </div>
       </div>
@@ -95,7 +95,7 @@ import { Indicator } from 'mint-ui';
       return {
         id:null,
         data:null,
-        playing : false,
+        // playing : false,
         popupVisible:false,
         fs:false,
         txt:'',
@@ -119,6 +119,9 @@ import { Indicator } from 'mint-ui';
       ...mapActions([
         'showMsg',
       ]),
+      ...mapGetters([
+        'musicid','playing'
+      ]),
       async getMusic(pa){
         Indicator.open('加载中...');
         const res = await api.DetailMusic(pa)
@@ -126,14 +129,18 @@ import { Indicator } from 'mint-ui';
         Indicator.close();
       },
       playsong(){
+        this.$store.dispatch('MusicId',this.data.id)
         setTimeout(()=>{
-          this.playing = true;
-          this.$refs.audio.play()
+          // this.playing = true;
+          this.$store.commit('PLAY',true)
+          this.$store.state.ele.play()
+          // this.$refs.audio.play()
         },10)
       },
       pausesong(){
-        this.playing = false;
-        this.$refs.audio.pause()
+        // this.playing = false;
+        this.$store.commit('PLAY',false)
+        this.$store.state.ele.pause()
       },
       playend(){
         this.playsong()

@@ -40,7 +40,16 @@ const mutations = {
     [types.CHANGEDIR]: (state, v) => {
         state.showDir = v;
         console.log(v)
-    }
+    },
+    [types.MUSICID]: (state, v) => {
+        state.musicid = v;
+    },
+    [types.ELE]: (state, v) => {
+        state.ele = v;
+    },
+    [types.PLAY]: (state, v) => {
+        state.playing = v;
+    },
 };
 
 export default mutations;

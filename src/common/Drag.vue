@@ -34,9 +34,16 @@
         const fnmove = (d)=>{
           d.stopPropagation();
           d.preventDefault();
-          const movex = d.changedTouches[0].clientX - this.homexy.homex ;
+          var movex;
+          if (d.changedTouches[0].clientX <50) {
+            movex = 40 - this.homexy.homex ;
+          }else{
+            movex = d.changedTouches[0].clientX - this.homexy.homex ;
+          }
+          // movex = d.changedTouches[0].clientX - this.homexy.homex ;
           const movey = d.changedTouches[0].clientY - this.homexy.homey;
           // $(e).css({"left":movex,"top":movey})
+          console.log(movex)
           e.style.left = movex+'px';
           e.style.top = movey+'px';
           this.move = true;

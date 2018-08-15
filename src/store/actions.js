@@ -18,6 +18,9 @@ export default {
     showMsg({commit}, state){
         commit('SHOW_MSG',state)
     },
+    MusicId({commit}, state){
+        commit('MUSICID',state)
+    },
 }
 
 //改法：

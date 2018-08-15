@@ -11,6 +11,9 @@ Vue.use(Vuex);
 const state = {
     token: window.sessionStorage.getItem('token'),
     username: '',
+    musicid:'',
+    playing:false,
+    ele:null,
     msg: {
         show: false,
         content: 'saf',

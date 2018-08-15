@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <audio ref="audio" @ended="playend" :src="'http://music.163.com/song/media/outer/url?id='+musicid()+'.mp3'"></audio>
     <Msg></Msg>
     <transition name="bar">
       <Dir v-if="dir()"  ></Dir>
@@ -18,8 +19,11 @@ export default {
   name: 'app',
   methods: {
       ...mapGetters([
-        'dir',
+        'dir','musicid'
       ]),
+      playend(){
+
+      },
       resize_font() {
         let deviceWidth = document.documentElement.clientWidth;
         // if(deviceWidth > 750) deviceWidth = 750;
@@ -34,6 +38,8 @@ export default {
       }
     },
     mounted() {
+      // this.$refs.audio.play()
+      this.$store.commit("ELE",this.$refs.audio)
       console.log(this.dir())
       this.resize_font()
       this.getcount()

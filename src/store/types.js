@@ -12,3 +12,9 @@ export const REGCOUNT = 'REGCOUNT';
 export const COUNT = 'COUNT';
 
 export const CHANGEDIR = 'CHANGEDIR';
+
+export const MUSICID = 'MUSICID';
+
+export const ELE = 'ELE';
+
+export const PLAY = 'PLAY';
