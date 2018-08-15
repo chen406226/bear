@@ -49,7 +49,7 @@
       },
       haha(path){
         this.$store.commit('CHANGEDIR',false)
-        this.$router.push(path)
+        this.$router.push("/"+path)
       },
       exitdir(){
         // this.$props.setindex.showidx = -1;

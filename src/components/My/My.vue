@@ -28,6 +28,7 @@
 <script>
 import VueCropper from '../../common/vue-cropper'
 import api from '../../axios.js'
+import { setTimeout } from 'timers';
 
 console.log(VueCropper)
   export default {
@@ -99,11 +100,12 @@ console.log(VueCropper)
           value:data
         })
         if (res.success) {
-          if (sessionStorage.getItem('avatar')=='dog2.png') {
-            sessionStorage.setItem('avatar',sessionStorage.getItem('username')+'.png')
+          if (sessionStorage.getItem('avatar')!=sessionStorage.getItem('username')+'.jpg') {
+            sessionStorage.setItem('avatar',sessionStorage.getItem('username')+'.jpg')
           }
-          
-          this.$router.push('/my')
+          setTimeout(()=>{
+            this.$router.push('/my')
+          },200)
         }
       }
     }

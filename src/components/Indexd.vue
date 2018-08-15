@@ -172,7 +172,7 @@ export default {
 <style scoped lang="less">
 .indexd{
   font-size: 14px;
-  padding: 0.5rem 0.3rem;
+  padding: 0.7rem 0.3rem;
   img{
     width: 4rem;
     height: auto;

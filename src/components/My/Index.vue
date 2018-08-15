@@ -55,14 +55,14 @@
   export default {
     data(){
       return {
-        avatar:'dog2.png',
+        avatar:sessionStorage.getItem('avatar'),
         username:sessionStorage.getItem('username'),
         signature:''
       }
     },
     mounted(){
-      if (sessionStorage.getItem('avatar')) {
-        this.avatar = sessionStorage.getItem('avatar');
+      if (sessionStorage.getItem('avatar')!=sessionStorage.getItem('username')+'.jpg') {
+        this.avatar = "dog2.png"
       }
     },
     methods:{

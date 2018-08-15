@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/vue-login');
-
+// mongoose.Promise = global.Promise
+// mongoose.connect
+mongoose.connect('mongodb://localhost/music');
+const option ={
+    useMongoClient:true,
+    reconnectTries:Number.MAX_VALUE,
+    reconnectInterval:500,
+    poolSize:10,
+    bufferMaxEntries:0
+}
 let db = mongoose.connection;
 // 防止Mongoose: mpromise 错误
 mongoose.Promise = global.Promise;

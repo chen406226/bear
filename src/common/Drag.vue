@@ -32,6 +32,8 @@
       },
       addevent(e) {
         const fnmove = (d)=>{
+          d.stopPropagation();
+          d.preventDefault();
           const movex = d.changedTouches[0].clientX - this.homexy.homex ;
           const movey = d.changedTouches[0].clientY - this.homexy.homey;
           // $(e).css({"left":movex,"top":movey})
@@ -41,6 +43,8 @@
           // e.removeEventListener("touchend",fnend);
         }
         e.addEventListener('touchstart',(event)=>{
+          event.stopPropagation();
+          event.preventDefault();
           this.dog = 'static/img/dog2.png';
           this.homexy.homex = event.changedTouches[0].clientX - e.offsetLeft ;
           this.homexy.homey = event.changedTouches[0].clientY - e.offsetTop ;
