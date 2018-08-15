@@ -41,7 +41,7 @@
               </p>
                 
             <!-- <span>{{timem(item._id)}}</span> -->
-            <p :style="{textIndent:'2em'}">{{item.text}}</p>
+            <p :style="{textIndent:'1em'}">{{item.text}}</p>
             </div>
           </li>
         </ul>
@@ -254,8 +254,11 @@ import { Indicator } from 'mint-ui';
     }
     .comment{
       ul{
+        padding: 0 .2rem;
         li{
           border-bottom: 0.2rem solid #ccc;
+          background-color: #0c8918;
+          padding: .1rem;
           &:last-child{
             border: 0;
           }          
