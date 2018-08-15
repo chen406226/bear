@@ -258,6 +258,7 @@ import { Indicator } from 'mint-ui';
         li{
           border-bottom: 0.2rem solid #ccc;
           background-color: #0c8918;
+          border-radius: .1rem;
           padding: .1rem;
           &:last-child{
             border: 0;
