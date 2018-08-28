@@ -52,7 +52,6 @@ const delUser = function(id){
             if(err){
                 reject(err);
             }
-            console.log('删除用户成功');
             resolve();
         });
     });
@@ -60,7 +59,6 @@ const delUser = function(id){
 //添加相关音乐
 const addMusic = function(username,title,create_time,id){
     return new Promise(( resolve, reject) => {
-        console.log('addmusi')
         User.update({ username },{'$push':{mymusic:{title,create_time,id}}},(err,data)=>{
             if (err) {
                 reject(err);
@@ -99,18 +97,15 @@ const Login = async ( ctx ) => {
     
     let doc = await findUser(username);
     if(!doc){
-        console.log('检查到用户名不存在');
         ctx.status = 200;
         ctx.body = {
             success:false,
             mes:'用户不存在'
         }
     }else if(doc.password === password){
-        console.log('密码一致!');
 
          //生成一个新的token,并存到数据库
         let token = createToken(username);
-        console.log(token);
         doc.token = token;
         await new Promise((resolve, reject) => {
             doc.save((err) => {
@@ -130,7 +125,6 @@ const Login = async ( ctx ) => {
             create_time: doc.create_time
         };
     }else{
-        console.log('密码错误!');
         ctx.status = 200;
         ctx.body = {
             success: false,
@@ -153,7 +147,6 @@ const Reg = async ( ctx ) => {
 
     let doc = await findUser(user.username);
     if(doc){ 
-        console.log('用户名已经存在');
         ctx.status = 200;
         ctx.body = {
             success: false,
@@ -169,7 +162,6 @@ const Reg = async ( ctx ) => {
                 system.Setregcount();
             });
         });
-        console.log('注册成功');
         ctx.status = 200;
         ctx.body = {
             success: true

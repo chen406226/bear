@@ -50,7 +50,6 @@ const delArticle = function(id){
             if(err){
                 reject(err);
             }
-            console.log('删除用户成功');
             resolve();
         });
     });
@@ -140,7 +139,6 @@ const Create = async ( ctx ) => {
             user.addArticle(article.create_user,article.createtext,article.create_time,article._id)
         });
     });
-    console.log('创建成功');
     ctx.status = 200;
     ctx.body = {
         success: true,
@@ -162,7 +160,6 @@ const GetAllUsers = async( ctx ) => {
 //获得部分
 const GetlimitMusic = async( ctx ) => {
     //查询所有用户信息
-    console.log(34)
     let page = ctx.request.body.page;
     let pageSize = ctx.request.body.pageSize;
     let doc = await findlimitMusic(page,pageSize);

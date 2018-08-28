@@ -34,7 +34,6 @@ const delSystem = function(id){
             if(err){
                 reject(err);
             }
-            console.log('删除用户成功');
             resolve();
         });
     });
@@ -44,14 +43,12 @@ const delSystem = function(id){
 const Getcount = async ( ctx ) => {
     //拿到账号和密码
     let doc = await findSystem(1);
-    console.log(doc)
     if(!doc){
         let system = new System({
             id: 1,
             count: 1,
             regcount: 0,
         });
-        console.log('reg')
       await new Promise((resolve, reject) => {
         system.save((err) => {
               if(err){

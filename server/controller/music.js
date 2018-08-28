@@ -49,7 +49,6 @@ const delMusic = function(id){
             if(err){
                 reject(err);
             }
-            console.log('删除用户成功');
             resolve();
         });
     });
@@ -132,7 +131,6 @@ const Create = async ( ctx ) => {
     music.create_time = moment(objectIdToTimestamp(music._id)).format('YYYY-MM-DD HH:mm');
     let doc = await findMusic(music.id);
     if(doc){ 
-        console.log('歌曲已经存在');
         ctx.status = 200;
         ctx.body = {
             success: false,
@@ -148,7 +146,6 @@ const Create = async ( ctx ) => {
             });
         });
         await user.addMusic(music.create_user,music.songinfo.name,music.create_time,music.id)                
-        console.log('创建成功');
         ctx.status = 200;
         ctx.body = {
             success: true,
@@ -170,7 +167,6 @@ const GetAllUsers = async( ctx ) => {
 //获得部分
 const GetlimitMusic = async( ctx ) => {
     //查询所有用户信息
-    console.log(34)
     let page = ctx.request.body.page;
     let pageSize = ctx.request.body.pageSize;
     let doc = await findlimitMusic(page,pageSize);

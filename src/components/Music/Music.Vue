@@ -119,7 +119,6 @@ export default {
     //     this.users = response.data.result;
     //   }
     // });
-    console.log(this.$store)
   },
   components:{
     Head,Drag
@@ -133,7 +132,6 @@ export default {
     },
     async getmusic(){
       const res = await axios.get('http://musicapi.leanapp.cn/search?keywords=海阔天空')
-      console.log(res)
       this.musiclist=res.data.result.songs
     },
     maodian(){
@@ -146,7 +144,6 @@ export default {
         page:this.page,
         pageSize:this.pageSize,
       })
-      console.log(23)
       // setTimeout(() => {
       //   let last = this.list[this.list.length - 1];
       //   for (let i = 1; i <= 10; i++) {
@@ -163,7 +160,6 @@ export default {
       this.musiclist=this.musiclist.concat(res.result)
       this.$refs.loadmore.onBottomLoaded();
       this.allLoaded = false;            
-      console.log(res)
     },
     playsong(id){
       this.songid = id;

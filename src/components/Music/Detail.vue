@@ -102,7 +102,6 @@ import { Indicator } from 'mint-ui';
       }
     },
     created(){
-      console.log()
     },
     updated(){
       
@@ -156,7 +155,6 @@ import { Indicator } from 'mint-ui';
         window.history.back();
       },
       ok(){
-        console.log(window.location)
         var hs = window.location.hash
         hs = hs.slice(1);
         if (!sessionStorage.getItem('username')) {

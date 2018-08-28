@@ -45,7 +45,6 @@ const delMusic = function(id){
             if(err){
                 reject(err);
             }
-            console.log('删除用户成功');
             resolve();
         });
     });
@@ -170,7 +169,6 @@ const GetAllUsers = async( ctx ) => {
 //获得部分
 const GetlimitMusic = async( ctx ) => {
     //查询所有用户信息
-    console.log(34)
     let page = ctx.request.body.page;
     let pageSize = ctx.request.body.pageSize;
     let doc = await findlimitMusic(page,pageSize);
