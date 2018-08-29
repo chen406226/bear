@@ -39,7 +39,6 @@ const mutations = {
     },
     [types.CHANGEDIR]: (state, v) => {
         state.showDir = v;
-        console.log(v)
     },
     [types.MUSICID]: (state, v) => {
         state.musicid = v;

@@ -5,14 +5,19 @@
       <div class="header">
         <div class="infot">
           <div class="avatar">
-            <img v-if="avatar" @click="cancel" :src="'static/avatar/'+avatar" :style="{borderRadius:'50%'}" />
+            <img v-if="avatar" v-cloak @click="cancel" :src="'static/avatar/'+avatar" :style="{borderRadius:'50%'}" />
             <img v-else src="static/img/default.jpg" :style="{borderRadius:'50%'}" />
           </div>
         </div>
         <div class="info">
           <h3>{{username}}</h3>
-          <span>个性签名 ：</span>
-          <div class="oo">{{signature}}</div>
+          <span>个性签名</span>
+          <!-- <p v-html="mm"></p> -->
+          <div v-cloak v-if="!inputing" class="oo">
+            <cite @click="changeinput(true)">{{signature}}</cite>
+          </div>
+          
+          <textarea v-else @blur="savesign" maxlength="50" cols="25" rows="4" :placeholder="signature+'(小于50字，触摸输入框外部保存)'" type="text"/>
         </div>
       </div>
       <!-- <div class="fot">
@@ -26,7 +31,7 @@
         <span class="count">+3</span>
         <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
       </router-link> -->
-      <router-link tag='li' to="/my" class="link">
+      <router-link tag='li' to="/my" class="link black">
         <span class="mes">与我相关</span>
         <img src="static/img/comment.png" :style="{height:'0.4rem',width:'0.4rem'}">
         <span class="count">+3</span>
@@ -52,12 +57,16 @@
 </template>
 
 <script>
+import api from '../../axios.js'
+
   export default {
     data(){
       return {
         avatar:sessionStorage.getItem('avatar'),
         username:sessionStorage.getItem('username'),
-        signature:''
+        signature:sessionStorage.getItem('signature')||'这个人很懒什么都没留下！',
+        inputing:false,
+        mm:'<span>你好</span>'
       }
     },
     mounted(){
@@ -66,6 +75,29 @@
       }
     },
     methods:{
+      savesign(e){
+        this.changeinfo(e.target.value)
+      },
+      async changeinfo(data){
+        const res = await api.UpdateUser({
+          username:sessionStorage.getItem('username'),
+          key:'signature',
+          value:data
+        })
+        if (res.success) {
+          sessionStorage.setItem('signature',data)   
+          this.signature = data
+          setTimeout(()=>{
+            this.$router.push('/my')
+          },200)
+        }
+        setTimeout(() => {
+          this.inputing = false
+        }, 200);
+      },
+      changeinput(v){
+        this.inputing = v
+      },
       logout() {
         //清除token
         this.$store.dispatch('UserLogout');
@@ -133,8 +165,11 @@ header{
       padding-top: .5rem;
       text-align: left;
       height: 2.5rem;
+      h3{
+        color: aquamarine;
+      }
       .oo{
-        overflow: hidden;
+        // overflow: hidden;
         // word-break: break-all;
         // display: -webkit-box;
         // -webkit-box-orient: vertical;
@@ -142,7 +177,13 @@ header{
         // -webkit-line-clamp: 3;
         // position: relative;
         // line-height: 1.4em;
-        height: 4.2em;
+        height: 3.8rem;
+        padding-right: .3rem;
+        cite{
+          font-size: .24rem;
+          text-indent: 2em;
+          color: antiquewhite;
+        }
         // &::after{
         //   content: '...';
         //   font-weight: bold;
@@ -168,6 +209,9 @@ header{
 section{
   font-size: 16px;
   border-top: 0.2rem solid #ddd;
+  .black{
+    background-color: #ccc;
+  }
   li{
     list-style: none;
     display: flex;

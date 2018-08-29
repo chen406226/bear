@@ -96,6 +96,7 @@ const Login = async ( ctx ) => {
     let password = sha1(ctx.request.body.password);
     
     let doc = await findUser(username);
+    console.log(doc.password==password)
     if(!doc){
         ctx.status = 200;
         ctx.body = {
@@ -194,14 +195,15 @@ const Update = async( ctx ) => {
     //拿到要删除的用户id
     let username = ctx.request.body.username;
     let key = ctx.request.body.key;
-    let value = ctx.request.body.value.match(/base64,(.+)/)[1];
-    const url = username+'.jpg'
-    const dirpath=path.resolve(__dirname,"../../static/avatar/"+url);
+    let value = ctx.request.body.value;
     if (key == 'avatar') {
-        let bitmap = new Buffer(value,'base64')
+        value = username+'.jpg';
+        let val = value.match(/base64,(.+)/)[1];
+        const dirpath=path.resolve(__dirname,"../../static/avatar/"+value);
+        let bitmap = new Buffer(val,'base64')
         fs.writeFileSync(dirpath,bitmap)
     }
-    await updateUser(username,key,url);
+    await updateUser(username,key,value);
     ctx.status = 200;
     ctx.body = {
         success: '更新成功'

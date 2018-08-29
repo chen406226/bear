@@ -30,7 +30,7 @@
       </div>
       <mt-loadmore  :bottom-method="loadMore" :bottom-all-loaded="allLoaded" ref="loadmore">
         <ul ref="scrolls">
-          <li v-for="item in musiclist" @click="jump(item.id)">
+          <li v-for="(item,idx) in musiclist" key="idx" @click="jump(item.id)">
             <div class="cont">
               <div class="info">
                 <p :style="{color:'#0c73c2'}">{{item.songinfo.artistname}} : <span :style='{color:"#ea2000",fontSize:"14px",marginLeft:"15px"}'>{{item.songinfo.name}}</span></p>
