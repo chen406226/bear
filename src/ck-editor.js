@@ -1,7 +1,7 @@
 /**
  * Ckeditor 1.1.1
  * git+https://github.com/PeakTai/vue-html5-editor.git
- * build at Wed Aug 29 2018 22:25:28 GMT+0800 (中国标准时间)
+ * build at Wed Aug 29 2018 23:10:07 GMT+0800 (中国标准时间)
  */
 
 (function (global, factory) {
@@ -84,7 +84,7 @@
         }
     }
 
-    var template = "<div> <div> <label> <input type=\"radio\" value=\"foreColor\" v-model=\"command\">&nbsp; {{$parent.locale[\"字體顏色\"]}} </label> <label> <input type=\"radio\" value=\"backColor\" v-model=\"command\">&nbsp; {{$parent.locale[\"背景颜色\"]}} </label> </div> <div> <div v-for=\"color in colors\" :style=\"{'background-color':color}\" class=\"color-card\" @click=\"changeColor(color)\"> </div> <div style=\"clear: both\"></div> </div> </div> ";
+    var template = "<div> <div> <label> <input type=\"radio\" value=\"foreColor\" v-model=\"command\">&nbsp; 字體顏色 </label> <label> <input type=\"radio\" value=\"backColor\" v-model=\"command\">&nbsp; 背景颜色 </label> </div> <div> <div v-for=\"color in colors\" :style=\"{'background-color':color}\" class=\"color-card\" @click=\"changeColor(color)\"> </div> <div style=\"clear: both\"></div> </div> </div> ";
 
     __$styleInject(".vue-html5-editor .color-card{margin:2px;width:30px;height:30px;float:left;cursor:pointer}",undefined);
 
@@ -240,7 +240,7 @@
         }
     };
 
-    var template$2 = "<form @submit.prevent=\"createLink\"> <input type=\"text\" :placeholder=\"$parent.locale['please enter a url']\" v-model=\"url\" maxlength=\"1024\"> <button type=\"submit\">{{$parent.locale[\"添加链接\"]}}</button> </form>";
+    var template$2 = "<form @submit.prevent=\"createLink\"> <input type=\"text\" :placeholder=\"$parent.locale['please enter a url']\" v-model=\"url\" maxlength=\"1024\"> <button type=\"submit\">添加链接</button> </form>";
 
     var dashboard$2 = {
         template: template$2,
@@ -270,7 +270,7 @@
         dashboard: dashboard$2
     };
 
-    var template$3 = "<div> <button type=\"button\" @click=\"$parent.execCommand('bold')\">{{$parent.locale[\"加粗\"]}}</button> <button type=\"button\" @click=\"$parent.execCommand('italic')\">{{$parent.locale[\"傾斜\"]}}</button> <button type=\"button\" @click=\"$parent.execCommand('underline')\">{{$parent.locale[\"下劃線\"]}}</button> <button type=\"button\" @click=\"$parent.execCommand('strikeThrough')\">{{$parent.locale[\"錯誤縣\"]}} </button> <!-- <button type=\"button\" @click=\"$parent.execCommand('subscript')\">{{$parent.locale[\"subscript\"]}}</button> --> <!-- <button type=\"button\" @click=\"$parent.execCommand('superscript')\">{{$parent.locale[\"superscript\"]}}</button> --> </div> ";
+    var template$3 = "<div> <button type=\"button\" @click=\"$parent.execCommand('bold')\">加粗</button> <button type=\"button\" @click=\"$parent.execCommand('italic')\">傾斜</button> <button type=\"button\" @click=\"$parent.execCommand('underline')\">下劃線</button> <button type=\"button\" @click=\"$parent.execCommand('strikeThrough')\">錯誤縣 </button> <!-- <button type=\"button\" @click=\"$parent.execCommand('subscript')\">{{$parent.locale[\"subscript\"]}}</button> --> <!-- <button type=\"button\" @click=\"$parent.execCommand('superscript')\">{{$parent.locale[\"superscript\"]}}</button> --> </div> ";
 
     var dashboard$3 = {
         template: template$3

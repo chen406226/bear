@@ -10,7 +10,7 @@
     export default {
         data(){
             return {
-                content: "<h3>我有酒我要听你讲故事&nbsp;^_^</h3>",
+                content: "<h3>我有酒你有故事吗&nbsp;&nbsp;&nbsp;&nbsp;^_^</h3>",
             }
         },
         methods:{
