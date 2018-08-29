@@ -99,6 +99,11 @@ const Error404 = resolve => {
   }); 
 };
 
+const Editor = resolve => {
+  require.ensure(['../common/Editor.vue'], () => {
+      resolve(require('../common/Editor.vue'));
+  }); 
+};
 
 
 const router = new Router({
@@ -177,6 +182,9 @@ const router = new Router({
     },{
       path: '/my/music',
       component: Mymusic,
+    },{
+      path: '/editor',
+      component: Editor,
     }
   ]
 });
