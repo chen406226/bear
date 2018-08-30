@@ -11,10 +11,10 @@
         </div>
         <div class="info">
           <h3>{{username}}</h3>
-          <span>个性签名</span>
+          <p>个性签名</p>
           <!-- <p v-html="mm"></p> -->
           <div v-cloak v-if="!inputing" class="oo">
-            <cite @click="changeinput(true)">{{signature}}</cite>
+            <cite @click="changeinput(true)">{{signature||'这个家伙很懒'}}</cite>
           </div>
           
           <textarea v-else @blur="savesign" maxlength="50" cols="25" rows="4" :placeholder="signature+'(小于50字，触摸输入框外部保存)'" type="text"/>

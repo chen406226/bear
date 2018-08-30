@@ -5,22 +5,13 @@
       <img src="static/img/musicbg.jpg">
       <div class="txtjump">
         <p class="">
-          <span class="jump jump1">每</span>
+          <span class="jump jump1">一</span>
           <span class="jump jump2">首</span>
-          <span class="jump jump3">歌</span>
-          <span class="jump jump4">都</span>
-          <span class="jump jump5">有</span>
-          <span class="jump jump6">灵</span>
-          <span class="jump jump7">魂</span>
-        </p>
-        <p class="">
-          <span class="jump jump1">和</span>
-          <span class="jump jump2">无</span>
-          <span class="jump jump3">数</span>
-          <span class="jump jump4">个</span>
-          <span class="jump jump5">故</span>
-          <span class="jump jump6">事</span>
-          <span class="jump jump7">！</span>
+          <span class="jump jump3">有</span>
+          <span class="jump jump4">灵</span>
+          <span class="jump jump5">魂</span>
+          <span class="jump jump6">的</span>
+          <span class="jump jump7">歌</span>
         </p>
       </div>
     </div>
