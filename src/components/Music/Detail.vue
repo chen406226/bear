@@ -26,10 +26,9 @@
         </div>
       </div>
       <div class="text">
-        <div>
-          <p :style="{textIndent:'1em'}">：</p>
-          <p :style="{color:'#666',textIndent:'2em'}" class="zi">{{data.createtext}}</p>
-        </div>
+        <!-- <p :style="{textIndent:'1em'}">Dear Gold：</p> -->
+        <div class="zi" v-html="data.createtext"></div>
+        
       </div>
       <div class="comment">
         <h5 style="text-indent:2em;">评论区：</h5>
@@ -249,6 +248,16 @@ import { Indicator } from 'mint-ui';
       border-top: 1px dashed #ddd;
       border-bottom: 0.2rem solid Purple;
       // background-color: #ccc;
+      padding:.5rem .1rem;
+      background: url('/static/img/paper.jpg') repeat-y;
+      min-height: 6rem;
+      background-size: 100% auto;
+      .zi{
+        opacity: .9;
+        h2{
+          text-align: center;
+        }
+      }
     }
     .comment{
       ul{

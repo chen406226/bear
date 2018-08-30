@@ -95,7 +95,7 @@
     line-height: 8px;
     color: rgb(201, 175, 140);
     top:450px;
-    left: 300px;
+    left: 280px;
     z-index:99999998;
   }
 </style>

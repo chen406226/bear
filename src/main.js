@@ -9,14 +9,17 @@ import MintUI from 'mint-ui';
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 // import CkEditor from './ck-editor.js'
-var CkEditor = require('./ck-editor.js')
+// var CkEditor = require('./ck-editor.js')
+// import {CkEditor} from './ck-editor.js'
 
 import store from './store'
-console.log(CkEditor)
+// console.log(CkEditor)
 Vue.use(ElementUI);
 Vue.use(MintUI);
 //引入store
-Vue.use(CkEditor.CkEditor,{name:'ck-editor'})
+// Vue.use(CkEditor,{name:'ck-editor'})
+
+
 
 //在应用启动时，可以通过设置 Vue.config.productionTip = false 来关闭生产模式下给出的提示
 Vue.config.productionTip = true

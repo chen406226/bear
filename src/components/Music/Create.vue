@@ -2,7 +2,7 @@
   <div class="createmusic">
     
     <div class="header">
-      <mt-search class="search" v-model="songname" cancel-text="取消" placeholder="歌名"></mt-search>
+      <mt-search class="search" v-model="songname" cancel-text="取消" placeholder="输入歌曲搜索并选择"></mt-search>
       <mt-button class="searchbtn" @click="searchsong" type="primary">搜索</mt-button>
     </div>
     <div class="songlist" v-if="musiclist.length>0">
@@ -25,10 +25,13 @@
         <!-- <audio ref="audio" @ended="playend" :src="'http://music.163.com/song/media/outer/url?id='+songid+'.mp3'"></audio> -->
       </div>
     </div>
-    <div class="txt" v-if="selectsong">
+    <!-- <div class="txt" v-if="selectsong">
       <textarea @input="input" ref='textarea' placeholder="说点什么吧！" autosize v-model="txt"></textarea>
       <div></div>
-    </div>
+    </div> -->
+    <section>
+      <CkEditor :content="content" @change="updateData" :height="500"></CkEditor>
+    </section>
     <!-- <audio autoplay :src="'http://music.163.com/song/media/outer/url?id='+447925066+'.mp3'"></audio> -->
     <!-- <div class="footer">
       <div class="canel" @click="cancel">
@@ -48,6 +51,9 @@ import api from '../../axios.js'
 import axios from 'axios'
 import Drag from '../../common/Drag.vue'
 import {mapGetters, mapActions} from 'vuex'
+import {CkEditor} from '../../ck-editor.js'
+var Cd = new CkEditor({name:'ck-editor'}) //局部注册要
+
 export default {
   data(){
     return {
@@ -56,13 +62,14 @@ export default {
       songname:'',
       selectsong:false,
       songid:null,
+      content: "<h3>我有酒你有故事吗&nbsp;&nbsp;&nbsp;&nbsp;^_^</h3>",
       // playing:false,
       item:{},
       txt:'',
     }
   },
   components:{
-    Drag
+    Drag,CkEditor:Cd
   },
   created(){
     // api.getUser().then((response) => {
@@ -82,6 +89,10 @@ export default {
     ...mapActions([
         'showMsg',
     ]),
+    updateData(e){
+      console.log(e)
+      this.txt = e;
+    },
     async getmusic(name){
       const res = await axios.get('http://musicapi.leanapp.cn/search?keywords='+name)
       if (res.data.result.songCount<1) {
@@ -116,6 +127,7 @@ export default {
     select(item){
       this.selectsong = true;
       this.item = item;
+      this.songid = item.id;
     },
     playend(){
       // this.playing = false;
@@ -150,7 +162,6 @@ export default {
       this.$router.push('/music')
     }
   },
- 
 }
 </script>
 

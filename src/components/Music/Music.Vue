@@ -46,9 +46,9 @@
                 <img :style="{marginLeft:'.5rem',width:'0.8rem',height:'0.6rem'}" src="static/img/pen.png">
                 <span>作者：{{item.create_user}}</span>
               </div>
-              <div>
+              <div class="textcon">
 
-              <p :style="{color:'#666',textIndent:'2em'}" class="zi">{{item.createtext}}</p>
+              <div :style="{color:'#666'}" class="zi" v-html="item.createtext"></div>
               </div>
             </div>
             <div class="footer">
@@ -256,16 +256,13 @@ export default {
     }
     .text{
       width: 100%;
-      p.zi{
-        overflow: hidden;
-        // word-break: break-all;
-        // display: -webkit-box;
-        // -webkit-box-orient: vertical;
-        // text-overflow: ellipsis;
-        // -webkit-line-clamp: 3;
-        position: relative;
-        line-height: 1.4em;
+      h2{
+        text-align: center;
+      }
+      .textcon{
         height: 4.2em;
+        overflow: hidden;
+
         &::after{
           content: '...';
           font-weight: bold;
@@ -276,6 +273,17 @@ export default {
           background-color: #eee;
           background: -webkit-linear-gradient(left,rgba(255,255,255,0) 0%,rgba(238,238,238,1) 50%,rgba(238,238,238,1) 100%);
         }
+      }
+      .zi{
+        // overflow: hidden;
+        // word-break: break-all;
+        // display: -webkit-box;
+        // -webkit-box-orient: vertical;
+        // text-overflow: ellipsis;
+        // -webkit-line-clamp: 3;
+        // position: relative;
+        // line-height: 1.4em;
+        // height: 4.2em;
       }
       // box-shadow:0 -12px 5px rgba(255,255,255,1);
     }
