@@ -34,8 +34,9 @@
             </div>
             <div class="text">
               <div>
-                <img :style="{marginLeft:'.5rem',width:'0.8rem',height:'0.6rem'}" src="static/img/pen.png">
+                <img class='avatar' :style="{marginLeft:'.5rem',marginBottom:'-.2rem',width:'0.6rem',height:'0.6rem'}" :src="'static/avatar/'+item.create_user+'.jpg'" onerror='javascript:this.src="static/avatar/dog2.png";this.onerror=null'>
                 <span>作者：{{item.create_user}}</span>
+                <img :style="{marginLeft:'.5rem',width:'0.8rem',height:'0.6rem'}" src="static/img/pen.png">
               </div>
               <div class="textcon">
 
@@ -247,17 +248,16 @@ export default {
     }
     .text{
       width: 100%;
-      h2{
-        text-align: center;
-      }
       .textcon{
-        height: 4.2em;
+        position: relative;
+        height: 1.7rem;
         overflow: hidden;
 
         &::after{
           content: '...';
           font-weight: bold;
           position: absolute;
+          height: 1em;
           bottom: 0;
           right: 0;
           padding: 0 20px;
@@ -275,6 +275,10 @@ export default {
         // position: relative;
         // line-height: 1.4em;
         // height: 4.2em;
+        h2{
+          font-size: 16px !important;
+          text-align: center !important;
+        }
       }
       // box-shadow:0 -12px 5px rgba(255,255,255,1);
     }

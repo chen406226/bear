@@ -2,8 +2,9 @@
   <div class="ji">
     <div class="bg" v-if="data">
       <div>
-        <img :style="{marginLeft:'-1.5rem',width:'0.8rem',height:'0.6rem'}" src="static/img/pen.png">
-        <span>作者：{{data.create_user}}</span>
+        <img class='avatar' :style="{marginLeft:'1rem',marginBottom:'-.2rem',width:'0.6rem',height:'0.6rem'}" :src="'static/avatar/'+data.create_user+'.jpg'" onerror='javascript:this.src="static/avatar/dog2.png";this.onerror=null'>
+        <span> {{data.create_user}}</span>
+        <img :style="{marginLeft:'0.5rem',width:'0.8rem',height:'0.6rem'}" src="static/img/pen.png">
       </div>
       <div class="footer">
         <span :style="{fontSize:'10px',lineHeight:'0.5rem'}">{{time(data.create_time)}}</span>
@@ -36,7 +37,8 @@
           <li v-for="item in reverse" :key="item._id">
             <div>
               <p :style="{textAlign:'center'}">
-                <span>过客：</span><span>{{item.username}}</span>
+                <img class='avatar' :style="{marginLeft:'.5rem',marginBottom:'-.2rem',width:'0.6rem',height:'0.6rem'}" :src="'static/avatar/'+item.username+'.jpg'" onerror='javascript:this.src="static/avatar/dog2.png";this.onerror=null'>                
+                <span>{{item.username}}</span>
               </p>
                 
             <!-- <span>{{timem(item._id)}}</span> -->
