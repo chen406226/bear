@@ -93,6 +93,25 @@ const BioDetail = resolve => {
     resolve(require('../components/Biography/Detail.vue'));
   });
 };
+
+const Answer = resolve => {
+  require.ensure(['../components/Answer/Index.vue'], () => {
+    resolve(require('../components/Answer/Index.vue'));
+  });
+};
+
+const CreateAnswer = resolve => {
+  require.ensure(['../components/Answer/Create.vue'], () => {
+    resolve(require('../components/Answer/Create.vue'));
+  });
+};
+
+const DetailAnswer = resolve => {
+  require.ensure(['../components/Answer/Detail.vue'], () => {
+    resolve(require('../components/Answer/Detail.vue'));
+  });
+};
+
 const Error404 = resolve => {
   require.ensure(['../components/404.vue'], () => {
       resolve(require('../components/404.vue'));
@@ -185,6 +204,15 @@ const router = new Router({
     },{
       path: '/editor',
       component: Editor,
+    },{
+      path: '/answer',
+      component: Answer,
+    },{
+      path: '/answer/create',
+      component: CreateAnswer,
+    },{
+      path: '/answer/detail',
+      component: DetailAnswer,
     }
   ]
 });
