@@ -28,7 +28,7 @@
         </div>
         <div class="flex">
           <span class="answerwenti">得分顺序：</span>
-          <input class="form-control flex1" type="text" v-model="issues[index].order" placeholder="请大写如C>B>A填入CBA" name="" id="">
+          <input class="form-control flex1" maxlength="3" @blur="blurpt(issues[index].order)" type="text" v-model="issues[index].order" placeholder="请大写如C>B>A填入CBA" name="" id="">
         </div>
       </div>
 
@@ -55,6 +55,13 @@ export default {
     } 
   },
   methods:{
+    blurpt(e){
+      if (e.indexOf('A')!=-1&&e.indexOf('B')!=-1&&e.indexOf('C')!=-1) {
+        
+      }else{
+        alert('输入错误')
+      }
+    },
     fd(){
       const mm = JSON.parse(JSON.stringify(this.issues))
       mm.push({issue:'',

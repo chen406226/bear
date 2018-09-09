@@ -6,19 +6,19 @@
         <div class="textalignleft">
           <p>A:
             <label :for="'wta'+index">
-              <input type="radio" :id="'wta'+index" :checked="'wta'+index==checks[index]" @click="changese('wta'+index,index)" :name="'wt'+index"/>
+              <input type="radio" :id="'wta'+index" :checked="'A'+index==checks[index]" @click="changese('A'+index,index)" :name="'wt'+index"/>
               {{item.a}}
             </label>
           </p>
           <p>B:
             <label :for="'wtb'+index">
-              <input type="radio" :id="'wtb'+index" :checked="'wtb'+index==checks[index]" @click="changese('wtb'+index,index)" :name="'wt'+index"/>
+              <input type="radio" :id="'wtb'+index" :checked="'B'+index==checks[index]" @click="changese('B'+index,index)" :name="'wt'+index"/>
               {{item.b}}
             </label>
           </p>
           <p>C:
             <label :for="'wtc'+index">
-              <input type="radio" :id="'wtc'+index" :checked="'wtc'+index==checks[index]" @click="changese('wtc'+index,index)" :name="'wt'+index"/>
+              <input type="radio" :id="'wtc'+index" :checked="'C'+index==checks[index]" @click="changese('C'+index,index)" :name="'wt'+index"/>
               {{item.c}}
             </label>
           </p>
@@ -26,7 +26,7 @@
       </div>
     </header>
     <section>
-
+      <button @click="test">提交</button>
     </section>
   </div>
 </template>
@@ -35,19 +35,20 @@ export default {
   data(){
     return {
       theme:'套路吃什么',
-      checks:[0,1],
+      checks:[],
+      checkeds:[],
       issues:[{
         issue:'早晨吃什么',
         a:'是的',
         b:'布加迪沙发客',
         c:'阿什顿发的',
-        order:'阿撒地方'
+        order:'ABC'
       },{
         issue:'早晨吃什么',
         a:'是的',
         b:'布加迪沙发客',
         c:'阿什顿发的',
-        order:'阿撒地方'
+        order:'BAC'
       }]
     }
   },
@@ -55,10 +56,28 @@ export default {
     changese(e,d){
       console.log(e)
       this.checks[d]=e
+    },
+    test(){
+      if (this.checks.includes('D')) {
+        alert('请选择')
+        return;
+      }
+      this.checkeds = this.checks.map(item => item[0]);
+      var cardinal = 100/this.checks.length;
+      var sum = 0;
+      for (let i = 0; i < this.checks.length; i++) {
+        const select = this.checkeds[i];
+        const coll = this.issues[i].order
+        const scoreidx = 2 - coll.indexOf(select)
+        console.log(coll,select)
+        const score = cardinal*scoreidx/2
+        sum+=score
+      }
+      alert(sum)
     }
   },
   mounted(){
-
+    this.checks = new Array(this.issues.length).fill('D')
   }
 }
 </script>
