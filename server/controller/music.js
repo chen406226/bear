@@ -172,7 +172,7 @@ const GetlimitMusic = async( ctx ) => {
     let doc = await findlimitMusic(page,pageSize);
     ctx.status = 200;
     ctx.body = {
-        succsess: '成功',
+        success: '成功',
         result: doc
     };
 };

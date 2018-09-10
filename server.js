@@ -16,11 +16,13 @@ const loginRouter = require('./server/routes/user.js');
 const musicRouter = require('./server/routes/music.js');
 const handleRouter = require('./server/routes/handle.js');
 const articleRouter = require('./server/routes/article.js');
+const questRouter = require('./server/routes/quest.js');
 //装载子路由
 router.use('/api', loginRouter.routes(), loginRouter.allowedMethods());
 router.use('/music', musicRouter.routes(), musicRouter.allowedMethods());
 router.use('/upload', handleRouter.routes(), handleRouter.allowedMethods());
 router.use('/article', articleRouter.routes(), articleRouter.allowedMethods());
+router.use('/quest', questRouter.routes(), questRouter.allowedMethods());
 
 //加载路由中间件
 

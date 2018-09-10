@@ -34,6 +34,7 @@ const userSchema = mongoose.Schema({
         create_time:Date,
         id:String        
     }],
+    myquest:[],
     myarticle:[{
         title:String,
         create_time:Date,
@@ -71,6 +72,16 @@ const musicSchema = mongoose.Schema({
     }],
     create_time:Date
 })
+
+//创建问答schema
+const questSchema = mongoose.Schema({
+    create_user: String,
+    title:String,
+    issues:[],
+    answers:[],
+    create_time:Date
+})
+
 //创建聊天
 const chartSchema = mongoose.Schema({
     comment:[{
@@ -111,6 +122,7 @@ const model = {
     Music:mongoose.model('Music',musicSchema),
     Syst:mongoose.model('Syst',systSchema),
     Article:mongoose.model('System',articleSchema),
+    Quest:mongoose.model('Quest',questSchema),
 };
 
 module.exports = model;

@@ -1,10 +1,9 @@
 <template>
   <div class="createanswer">
     <header>
-      <h4>创建人</h4>
       <div class="flex">
-        <span class="answerwenti">主题概括：</span>
-        <input class="form-control" type="text" v-model="theme" name="" id="">
+        <span class="answerwenti">问答主题：</span>
+        <input class="form-control" maxlength="20" type="text" v-model="theme" name="" id="">
       </div>
     </header>
     <section>
@@ -34,13 +33,16 @@
 
     </section>
     <footer>
-      <button class="btn btn-primary" @touchstart="fd"> + </button>
-      <button class="btn btn-primary" @touchstart="fd">提交</button>
+      <button class="btn btn-primary" @touchstart="add"> + </button>
+      <button class="btn btn-primary" @touchstart="submit">提交</button>
 
     </footer>
   </div>
 </template>
 <script>
+import {mapGetters, mapActions} from 'vuex'
+import api from '../../axios.js'
+
 export default {
   data(){
     return {
@@ -55,14 +57,17 @@ export default {
     } 
   },
   methods:{
+    ...mapActions([
+      'showMsg',
+    ]),
     blurpt(e){
       if (e.indexOf('A')!=-1&&e.indexOf('B')!=-1&&e.indexOf('C')!=-1) {
-        
+          
       }else{
-        alert('输入错误')
+        this.showMsg('请按要求输入')
       }
     },
-    fd(){
+    add(){
       const mm = JSON.parse(JSON.stringify(this.issues))
       mm.push({issue:'',
         a:'',
@@ -70,7 +75,18 @@ export default {
         c:'',
         order:''})
       this.issues =mm 
-      console.log(this.issues)
+    },
+    async submit(){
+      const params = {
+        issues:this.issues,
+        createuser:sessionStorage.getItem('username'),
+        title:this.theme,
+      }
+
+      const res = await api.CreateQuest(params);
+      this.showMsg(res.mes)
+      // window.reload()
+      // this.$router.push('/music')
     }
   }
 }

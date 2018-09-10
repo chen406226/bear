@@ -67,6 +67,20 @@ const addMusic = function(username,title,create_time,id){
         })
     });
 };
+
+//添加相关问答
+const addQuest = function(username,_id,title,create_time){
+    return new Promise((resolve,reject) => {
+        User.update({username},{'$push':{myquest:{username,_id,title,create_time}}},(err,data)=>{
+            if (err) {
+                reject(err)
+            }
+            resolve();
+        })
+    })
+}
+
+
 //添加文章
 const addArticle = function(username,title,create_time){
     return new Promise(( resolve, reject) => {
@@ -96,7 +110,6 @@ const Login = async ( ctx ) => {
     let password = sha1(ctx.request.body.password);
     
     let doc = await findUser(username);
-    console.log(doc.password==password)
     if(!doc){
         ctx.status = 200;
         ctx.body = {
@@ -240,5 +253,6 @@ module.exports = {
     addMusic,
     addArticle,
     addChart,
-    Mymusic
+    Mymusic,
+    addQuest
 };

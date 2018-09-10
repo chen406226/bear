@@ -35,6 +35,10 @@ module.exports = {
       '/music': {
         target: 'http://localhost:8888',
 				changeOrigin: true
+      },
+      '/quest': {
+        target: 'http://localhost:8888',
+        changeOrigin: true
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

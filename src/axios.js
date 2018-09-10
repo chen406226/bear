@@ -48,7 +48,7 @@ instance.interceptors.response.use(
 export default {
     //得到系统数据
     getCount(){
-        return instance.get('/api/count')
+        return instance.get('/api/count');
     },
     //用户注册
     userRegister(data){
@@ -93,19 +93,30 @@ export default {
         return instance.post('/music/comment', data);
     },
     CreateArticle(data) {
-        return instance.post('/article/create', data)
+        return instance.post('/article/create', data);
     },
     GetArticle(data) {
-        return instance.post('/article/list', data)
+        return instance.post('/article/list', data);
     },
     DetailArticle(data) {
         return instance.post('/article/detail', data);
     },
     AddArticleComment(data) {
-        return instance.post('/article/comment', data)
+        return instance.post('/article/comment', data);
     },
     Uploadfile(data) {
         return instance.post('/upload/jpg', data);        
     },
-
+    CreateQuest(data) {
+        return instance.post('/quest/create',data);
+    },
+    GetQuest(data) {
+        return instance.post('/quest/list', data);
+    },
+    Addanswer(data) {
+        return instance.post('/quest/addanswer', data);
+    },
+    DetailQuest(data) {
+        return instance.post('/quest/detail', data)
+    }
 }

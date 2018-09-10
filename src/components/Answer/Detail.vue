@@ -1,5 +1,6 @@
 <template>
   <div class="answerdetail">
+    <h3>{{title}}<i style="font-size:10px;">{{time}}</i></h3>
     <header>
       <div class="answercon" v-for="(item,index) in issues">
         <p>第{{index+1}}题  ： <span v-text="item.issue"></span></p>
@@ -31,33 +32,42 @@
   </div>
 </template>
 <script>
+
+import {mapGetters, mapActions} from 'vuex'
+import api from '../../axios.js'
+import moment from 'moment'
+
+
 export default {
   data(){
     return {
-      theme:'套路吃什么',
+      id:null,
       checks:[],
       checkeds:[],
+      time:'',
+      title:'',
       issues:[{
-        issue:'早晨吃什么',
+        issue:'你爱我吗',
         a:'是的',
-        b:'布加迪沙发客',
-        c:'阿什顿发的',
+        b:'是的是的',
+        c:'是的是的是的',
         order:'ABC'
-      },{
-        issue:'早晨吃什么',
-        a:'是的',
-        b:'布加迪沙发客',
-        c:'阿什顿发的',
-        order:'BAC'
       }]
     }
   },
   methods:{
+    async getdata(_id){
+      const res = await api.DetailQuest({_id})
+      this.title = res.data.title
+      this.time = moment(res.data.create_time).format('YYYY-MM-DD hh:mm').slice(0,10)
+      this.issues = res.data.issues
+
+      this.checks = new Array(this.issues.length).fill('D');
+    },
     changese(e,d){
-      console.log(e)
       this.checks[d]=e
     },
-    test(){
+    async test(){
       if (this.checks.includes('D')) {
         alert('请选择')
         return;
@@ -69,15 +79,24 @@ export default {
         const select = this.checkeds[i];
         const coll = this.issues[i].order
         const scoreidx = 2 - coll.indexOf(select)
-        console.log(coll,select)
         const score = cardinal*scoreidx/2
         sum+=score
       }
+
+      let param = {
+        _id:this.id,
+        user:sessionStorage.getItem('username'),
+        answer:this.checkeds.join(''),
+        score:sum,
+      }
+      const m = await api.Addanswer(param)
       alert(sum)
+
     }
   },
   mounted(){
-    this.checks = new Array(this.issues.length).fill('D')
+    this.id = this.$route.query.id;
+    this.getdata({_id:this.id})
   }
 }
 </script>

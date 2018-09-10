@@ -90,7 +90,6 @@ export default {
         'showMsg',
     ]),
     updateData(e){
-      console.log(e)
       this.txt = e;
     },
     async getmusic(name){
