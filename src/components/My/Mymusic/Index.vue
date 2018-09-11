@@ -67,9 +67,7 @@ export default {
       const res = await api.getMymusic(params)
       this.musiclist=this.musiclist.concat(res.result)
       this.$refs.loadmore.onBottomLoaded();
-      console.log(this.musiclist)
       this.allLoaded = false;            
-      console.log(res)
     },
     playend(){
       this.playing = false;

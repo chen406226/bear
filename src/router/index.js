@@ -17,17 +17,17 @@ const Register = resolve => {
   });
 };
 
-const Hello = resolve => {
-  require.ensure(['../components/Hello.vue'], () => {
-    resolve(require('../components/Hello.vue'));
-  });
-};
+// const Hello = resolve => {
+//   require.ensure(['../components/Hello.vue'], () => {
+//     resolve(require('../components/Hello.vue'));
+//   });
+// };
 
-const Test = resolve => {
-  require.ensure(['../components/Test.vue'], () => {
-    resolve(require('../components/Test.vue'));
-  });
-};
+// const Test = resolve => {
+//   require.ensure(['../components/Test.vue'], () => {
+//     resolve(require('../components/Test.vue'));
+//   });
+// };
 
 const Indexd = resolve => {
   require.ensure(['../components/Indexd.vue'], () => {
@@ -53,11 +53,11 @@ const DetailMusic = resolve => {
   });
 };
 
-const Biography = resolve => {
-  require.ensure(['../components/Biography/Biography.vue'], () => {
-    resolve(require('../components/Biography/Biography.vue'));
-  });
-};
+// const Biography = resolve => {
+//   require.ensure(['../components/Biography/Biography.vue'], () => {
+//     resolve(require('../components/Biography/Biography.vue'));
+//   });
+// };
 
 const My = resolve => {
   require.ensure(['../components/My/My.vue'], () => {
@@ -77,40 +77,40 @@ const Mymusic = resolve => {
   });
 };
 
-const Article = resolve => {
-  require.ensure(['../components/Article/Article.vue'], () => {
-    resolve(require('../components/Article/Article.vue'));
-  });
-};
-const CreateArticle = resolve => {
-  require.ensure(['../components/Article/Create.vue'], () => {
-    resolve(require('../components/Article/Create.vue'));
-  });
-};
+// const Article = resolve => {
+//   require.ensure(['../components/Article/Article.vue'], () => {
+//     resolve(require('../components/Article/Article.vue'));
+//   });
+// };
+// const CreateArticle = resolve => {
+//   require.ensure(['../components/Article/Create.vue'], () => {
+//     resolve(require('../components/Article/Create.vue'));
+//   });
+// };
 
-const BioDetail = resolve => {
-  require.ensure(['../components/Biography/Detail.vue'], () => {
-    resolve(require('../components/Biography/Detail.vue'));
-  });
-};
+// const BioDetail = resolve => {
+//   require.ensure(['../components/Biography/Detail.vue'], () => {
+//     resolve(require('../components/Biography/Detail.vue'));
+//   });
+// };
 
-const Answer = resolve => {
-  require.ensure(['../components/Answer/Index.vue'], () => {
-    resolve(require('../components/Answer/Index.vue'));
-  });
-};
+// const Answer = resolve => {
+//   require.ensure(['../components/Answer/Index.vue'], () => {
+//     resolve(require('../components/Answer/Index.vue'));
+//   });
+// };
 
-const CreateAnswer = resolve => {
-  require.ensure(['../components/Answer/Create.vue'], () => {
-    resolve(require('../components/Answer/Create.vue'));
-  });
-};
+// const CreateAnswer = resolve => {
+//   require.ensure(['../components/Answer/Create.vue'], () => {
+//     resolve(require('../components/Answer/Create.vue'));
+//   });
+// };
 
-const DetailAnswer = resolve => {
-  require.ensure(['../components/Answer/Detail.vue'], () => {
-    resolve(require('../components/Answer/Detail.vue'));
-  });
-};
+// const DetailAnswer = resolve => {
+//   require.ensure(['../components/Answer/Detail.vue'], () => {
+//     resolve(require('../components/Answer/Detail.vue'));
+//   });
+// };
 
 const Error404 = resolve => {
   require.ensure(['../components/404.vue'], () => {
@@ -118,11 +118,11 @@ const Error404 = resolve => {
   }); 
 };
 
-const Editor = resolve => {
-  require.ensure(['../common/Editor.vue'], () => {
-      resolve(require('../common/Editor.vue'));
-  }); 
-};
+// const Editor = resolve => {
+//   require.ensure(['../common/Editor.vue'], () => {
+//       resolve(require('../common/Editor.vue'));
+//   }); 
+// };
 
 
 const router = new Router({
@@ -132,19 +132,20 @@ const router = new Router({
       path: '/',
       name: 'Indexd',
       component: Indexd
-    },{
-      path: '/hello',
-      name: 'Hello',
-      component: Hello,
-      meta: {
-        requiresAuth: true
-      }
     },
-    {
-      path: '/test',
-      name: 'Test',
-      component: Test,
-    },
+    // {
+    //   path: '/hello',
+    //   name: 'Hello',
+    //   component: Hello,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
+    // {
+    //   path: '/test',
+    //   name: 'Test',
+    //   component: Test,
+    // },
     {
       path: '/login',
       name: 'login',
@@ -173,20 +174,22 @@ const router = new Router({
       path: '/music/detail',
       name: 'detail',
       component: DetailMusic,
-    },{
-      path: '/biography',
-      name: 'biography',
-      component: Biography,
-    },{
-      path: '/biography/detail',
-      component: BioDetail,
-    },{
-      path: '/article',
-      component: Article,
-    },{
-      path: '/article/create',
-      component: CreateArticle,
-    },{
+    },
+    // {
+    //   path: '/biography',
+    //   name: 'biography',
+    //   component: Biography,
+    // },{
+    //   path: '/biography/detail',
+    //   component: BioDetail,
+    // },{
+    //   path: '/article',
+    //   component: Article,
+    // },{
+    //   path: '/article/create',
+    //   component: CreateArticle,
+    // },
+    {
       path: '/my/amend',
       component: My,     
       meta: {
@@ -201,19 +204,20 @@ const router = new Router({
     },{
       path: '/my/music',
       component: Mymusic,
-    },{
-      path: '/editor',
-      component: Editor,
-    },{
-      path: '/answer',
-      component: Answer,
-    },{
-      path: '/answer/create',
-      component: CreateAnswer,
-    },{
-      path: '/answer/detail',
-      component: DetailAnswer,
     }
+    // ,{
+    //   path: '/editor',
+    //   component: Editor,
+    // },{
+    //   path: '/answer',
+    //   component: Answer,
+    // },{
+    //   path: '/answer/create',
+    //   component: CreateAnswer,
+    // },{
+    //   path: '/answer/detail',
+    //   component: DetailAnswer,
+    // }
   ]
 });
 

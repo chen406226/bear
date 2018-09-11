@@ -30,7 +30,6 @@ import VueCropper from '../../common/vue-cropper'
 import api from '../../axios.js'
 import { setTimeout } from 'timers';
 
-console.log(VueCropper)
   export default {
     data(){
       return {
@@ -89,7 +88,6 @@ console.log(VueCropper)
         this.$refs.cropper2.getCropData((data) => {
           this.model = true
           this.modelSrc = data
-          console.log(typeof data)
           this.changeinfo(data)
         })
       },
