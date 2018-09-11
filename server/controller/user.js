@@ -210,9 +210,9 @@ const Update = async( ctx ) => {
     let key = ctx.request.body.key;
     let value = ctx.request.body.value;
     if (key == 'avatar') {
-        value = username+'.jpg';
         let val = value.match(/base64,(.+)/)[1];
-        const dirpath=path.resolve(__dirname,"../../static/avatar/"+value);
+        value = username+'.jpg';
+        const dirpath=path.resolve(__dirname,"../../dist/static/avatar/"+value);
         let bitmap = new Buffer(val,'base64')
         fs.writeFileSync(dirpath,bitmap)
     }

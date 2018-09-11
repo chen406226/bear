@@ -13,10 +13,10 @@
           <span class="mes">图文</span>
           <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
         </div> -->
-        <div class="link" @click="haha('biography')">
+        <!-- <div class="link" @click="haha('biography')">
           <span class="mes">传记</span>
           <img src="static/img/arrow.png" alt="" :style="{height:'0.4rem',width:'0.4rem'}">
-        </div>
+        </div> -->
       </section>
     </div>
     <div class="bg" @click="exitdir" ></div>

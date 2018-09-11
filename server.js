@@ -30,7 +30,7 @@ app.use(cors()).use(router.routes()).use(router.allowedMethods());
 
 
 // const convert = require('koa-convert');
-// app.use(convert(require('koa-static')(__dirname + '/public')));
+// app.use(convert(require('koa-static')(__dirname + '/dist')));
 
 app.listen(8888, () => {
     console.log('The server is running at http://localhost:' + 8888);
