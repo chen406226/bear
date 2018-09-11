@@ -44,79 +44,79 @@ instance.interceptors.response.use(
         return Promise.reject(error.response);
     }
 );
-
+const htt = 'http://localhost:8888'
 export default {
     //得到系统数据
     getCount(){
-        return instance.get('/api/count');
+        return instance.get(htt+'/api/count');
     },
     //用户注册
     userRegister(data){
-        return instance.post('/api/register', data);
+        return instance.post(htt+'/api/register', data);
     },
     //用户登录
     userLogin(data) {
-        return instance.post('/api/login', data); 
+        return instance.post(htt+'/api/login', data); 
     },
     //获取用户
     getUser() {
-        return instance.get('/api/user');
+        return instance.get(htt+'/api/user');
     },
     //获取用户
     getMymusic(data) {
-        return instance.post('/api/mymusic',data);
+        return instance.post(htt+'/api/mymusic',data);
     },
     //删除用户
     delUser(data) {
-        return instance.post('/api/delUser', data);
+        return instance.post(htt+'/api/delUser', data);
     },
     //更新用户信息
     UpdateUser(data) {
-        return instance.post('/api/update', data);
+        return instance.post(htt+'/api/update', data);
     },
     Infos() {
-        return instance.get('/music/infos');
+        return instance.get(htt+'/music/infos');
     },
     DetailMusic(data) {
-        return instance.post('/music/detail', data);
+        return instance.post(htt+'/music/detail', data);
     },
     //添加音乐
     CreateMusic(data) {
-        return instance.post('/music/create', data);
+        return instance.post(htt+'/music/create', data);
     },
     //得到音乐列表
     GetMusic(data) {
-        return instance.post('/music/list', data);
+        return instance.post(htt+'/music/list', data);
     },
     //添加音乐评论
     AddMusicComment(data) {
-        return instance.post('/music/comment', data);
+        return instance.post(htt+'/music/comment', data);
     },
     CreateArticle(data) {
-        return instance.post('/article/create', data);
+        return instance.post(htt+'/article/create', data);
     },
     GetArticle(data) {
-        return instance.post('/article/list', data);
+        return instance.post(htt+'/article/list', data);
     },
     DetailArticle(data) {
-        return instance.post('/article/detail', data);
+        return instance.post(htt+'/article/detail', data);
     },
     AddArticleComment(data) {
-        return instance.post('/article/comment', data);
+        return instance.post(htt+'/article/comment', data);
     },
     Uploadfile(data) {
-        return instance.post('/upload/jpg', data);        
+        return instance.post(htt+'/upload/jpg', data);        
     },
     CreateQuest(data) {
-        return instance.post('/quest/create',data);
+        return instance.post(htt+'/quest/create',data);
     },
     GetQuest(data) {
-        return instance.post('/quest/list', data);
+        return instance.post(htt+'/quest/list', data);
     },
     Addanswer(data) {
-        return instance.post('/quest/addanswer', data);
+        return instance.post(htt+'/quest/addanswer', data);
     },
     DetailQuest(data) {
-        return instance.post('/quest/detail', data)
+        return instance.post(htt+'/quest/detail', data)
     }
 }
