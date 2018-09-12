@@ -93,7 +93,8 @@ export default {
       this.txt = e;
     },
     async getmusic(name){
-      const res = await axios.get('http://musicapi.leanapp.cn/search?keywords='+name)
+      // const res = await axios.get('http://musicapi.leanapp.cn/search?keywords='+name)
+      const res = await axios.get('http://localhost:3000/search?keywords='+name)
       if (res.data.result.songCount<1) {
         this.showMsg('sorry！no resource!')      
         return ;  
